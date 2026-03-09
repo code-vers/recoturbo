@@ -1,6 +1,7 @@
 "use client";
 
 import { Pause, Play, Volume2, VolumeX } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 /**
@@ -107,7 +108,7 @@ export default function HeroBanner({
               "max-lg:text-[42px] max-md:text-[34px] max-sm:text-[30px]",
               compact ? "max-md:text-[26px] max-sm:text-[24px]" : "",
             ].join(" ")}>
-            {brand}
+            <Link href='/'> {brand}</Link>
           </div>
         </div>
       </div>
@@ -138,13 +139,13 @@ export default function HeroBanner({
                 <Play
                   size={22}
                   strokeWidth={1.8}
-                  className='transition-transform duration-300 group-hover:scale-110 max-md:w-4.5 max-md:h-4.5 max-sm:w-4.5 max-sm:h-4.5'
+                  className='transition-transform duration-300 cursor-pointer group-hover:scale-110 max-md:w-4.5 max-md:h-4.5 max-sm:w-4.5 max-sm:h-4.5'
                 />
               ) : (
                 <Pause
                   size={22}
                   strokeWidth={1.8}
-                  className='transition-transform duration-300 group-hover:scale-110 max-md:w-4.5 max-md:h-4.5 max-sm:w-4.5 max-sm:h-4.5'
+                  className='transition-transform duration-300 cursor-pointer group-hover:scale-110 max-md:w-4.5 max-md:h-4.5 max-sm:w-4.5 max-sm:h-4.5'
                 />
               )}
             </button>
@@ -158,13 +159,13 @@ export default function HeroBanner({
                 <VolumeX
                   size={22}
                   strokeWidth={1.8}
-                  className='transition-transform duration-300 group-hover:scale-110 max-md:w-4.5 max-md:h-4.5 max-sm:w-4.5 max-sm:h-4.5'
+                  className='transition-transform duration-300 cursor-pointer group-hover:scale-110 max-md:w-4.5 max-md:h-4.5 max-sm:w-4.5 max-sm:h-4.5'
                 />
               ) : (
                 <Volume2
                   size={22}
                   strokeWidth={1.8}
-                  className='transition-transform duration-300 group-hover:scale-110 max-md:w-4.5 max-md:h-4.5 max-sm:w-4.5 max-sm:h-4.5'
+                  className='transition-transform duration-300 cursor-pointer group-hover:scale-110 max-md:w-4.5 max-md:h-4.5 max-sm:w-4.5 max-sm:h-4.5'
                 />
               )}
             </button>
