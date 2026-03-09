@@ -1,6 +1,7 @@
 "use client";
 
 import { Pause, Play, Volume2, VolumeX } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 /**
@@ -107,7 +108,7 @@ export default function HeroBanner({
               "max-lg:text-[42px] max-md:text-[34px] max-sm:text-[30px]",
               compact ? "max-md:text-[26px] max-sm:text-[24px]" : "",
             ].join(" ")}>
-            {brand}
+            <Link href='/'> {brand}</Link>
           </div>
         </div>
       </div>

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import gsap from "gsap";
@@ -15,13 +16,13 @@ const DEFAULT_SLIDES = [
     title: "PURE CONNECTION WITH NATURE",
     description:
       "Shebara offers a unique blend of lush ecosystems and breathtaking coral reefs, where barefoot luxury meets conservation",
-    image: "/cd.jpg",
+    image: "/bc.jpg",
   },
   {
     title: "SCULPTED SERENITY",
     description:
       "Curved forms, immersive views, and tactile materials come together to shape a timeless atmosphere of elevated hospitality.",
-    image: "/ef.jpg",
+    image: "/cd.jpg",
   },
 ];
 
