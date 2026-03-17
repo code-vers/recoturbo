@@ -5,51 +5,56 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 /**
- * HeroBanner
+ * HeroBanner component.
  *
- * Behaviour:
- * - Brand text initially sits on top of the video
- * - On scroll it smoothly scales down and moves into navbar position
- * - Same element is animated (no duplicate title)
+ * Displays a full-screen video hero section with:
+ * - a floating brand title
+ * - play/pause control
+ * - mute/unmute control
+ * - a headline aligned to the bottom-right
  *
- * @param {Object} props
- * @param {string} props.videoSrc
- * @param {string} props.brand
+ * Brand behaviour:
+ * - Initially shows "room residences"
+ * - After scrolling past the sentinel, it switches to "room"
+ * - The font size stays the same during the switch
+ *
+ * @param {Object} props - Component props.
+ * @param {string} [props.videoSrc="/videos/ocean.mp4"] - Background video source.
+ * @param {string} [props.brand="room"] - Compact brand name shown after scroll.
+ * @returns {JSX.Element} Hero banner section.
  */
-
 export default function HeroBanner({
   videoSrc = "/videos/ocean.mp4",
   brand = "room",
 }) {
   const sentinelRef = useRef(null);
+  const videoRef = useRef(null);
+
   const [compact, setCompact] = useState(false);
+  const [paused, setPaused] = useState(false);
+  const [muted, setMuted] = useState(true);
 
   useEffect(() => {
     const el = sentinelRef.current;
     if (!el) return;
 
-    const io = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       ([entry]) => {
         setCompact(!entry.isIntersecting);
       },
       { threshold: 0 },
     );
 
-    io.observe(el);
+    observer.observe(el);
 
-    return () => io.disconnect();
+    return () => observer.disconnect();
   }, []);
 
   /**
-   * Video control buttons
-   * - Play / Pause
-   * - Mute / Unmute
+   * Toggles video play and pause state.
+   *
+   * @returns {void}
    */
-
-  const videoRef = useRef(null);
-  const [paused, setPaused] = useState(false);
-  const [muted, setMuted] = useState(true);
-
   const togglePlay = () => {
     const video = videoRef.current;
     if (!video) return;
@@ -57,12 +62,18 @@ export default function HeroBanner({
     if (video.paused) {
       video.play();
       setPaused(false);
-    } else {
-      video.pause();
-      setPaused(true);
+      return;
     }
+
+    video.pause();
+    setPaused(true);
   };
 
+  /**
+   * Toggles video mute state.
+   *
+   * @returns {void}
+   */
   const toggleMute = () => {
     const video = videoRef.current;
     if (!video) return;
@@ -72,23 +83,23 @@ export default function HeroBanner({
   };
 
   const controlBtn =
-    "group flex h-14 w-14 items-center justify-center rounded-full " +
-    "border border-white/70 text-white " +
-    "bg-black/20 backdrop-blur-md " +
-    "transition-all duration-300 ease-out " +
-    "hover:bg-white/15 hover:scale-105 active:scale-95 " +
-    "shadow-[0_6px_30px_rgba(0,0,0,0.35)] " +
+    "group flex h-14 w-14 shrink-0 items-center justify-center rounded-full " +
+    "border border-white/70 bg-black/20 text-white backdrop-blur-md " +
+    "shadow-[0_6px_30px_rgba(0,0,0,0.35)] transition-all duration-300 ease-out " +
+    "hover:scale-105 hover:bg-white/15 active:scale-95 " +
     "max-md:h-12 max-md:w-12 max-sm:h-11 max-sm:w-11";
+
+  const brandText = compact ? brand : "room residences";
 
   return (
     <section className='relative w-full bg-black'>
-      {/* Sentinel */}
+      {/* Scroll trigger */}
       <div
         ref={sentinelRef}
         className='absolute top-30 h-px w-full max-lg:top-24 max-md:top-21 max-sm:top-19'
       />
 
-      {/* Navbar Layer */}
+      {/* Navbar layer */}
       <div
         className={[
           "fixed left-0 right-0 z-40 flex items-center",
@@ -98,24 +109,24 @@ export default function HeroBanner({
             : "top-0 h-24 bg-transparent",
           "max-lg:h-20 max-md:h-16 max-sm:h-14",
         ].join(" ")}>
-        <div className='relative w-full mx-auto px-6 max-lg:px-5 max-md:px-4 max-sm:px-4'>
+        <div className='relative mx-auto w-full px-6 max-lg:px-5 max-md:px-4 max-sm:px-4'>
           {/* Brand */}
           <div
             className={[
               "text-white font-light tracking-[0.5px]",
               "transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
-              compact ? "text-[30px]" : "text-[clamp(46px,5vw,80px)]",
-              "max-lg:text-[42px] max-md:text-[34px] max-sm:text-[30px]",
-              compact ? "max-md:text-[26px] max-sm:text-[24px]" : "",
+              compact
+                ? "text-[46px] max-lg:text-[40px] max-md:text-[32px] max-sm:text-[26px]"
+                : "text-[clamp(60px,6vw,88px)] max-lg:text-[54px] max-md:text-[40px] max-sm:text-[32px]",
             ].join(" ")}>
-            <Link href='/'> {brand}</Link>
+            <Link href='/'>{compact ? brand : "room residences"}</Link>
           </div>
         </div>
       </div>
 
-      {/* HERO */}
-      <div className='relative h-[min(92vh,860px)] w-full overflow-hidden max-lg:h-[min(88vh,760px)] max-md:h-[min(82vh,680px)] max-sm:h-[min(78vh,620px)]'>
-        {/* Background Video */}
+      {/* Hero */}
+      <div className='relative h-screen w-full overflow-hidden'>
+        {/* Background video */}
         <video
           ref={videoRef}
           className='absolute inset-0 h-full w-full object-cover'
@@ -127,25 +138,26 @@ export default function HeroBanner({
           preload='metadata'
         />
 
-        {/* Bottom UI */}
-        <div className='absolute inset-0 flex items-end justify-between p-8 max-lg:p-7 max-md:p-5 max-sm:p-4'>
-          <div className='flex gap-4 max-md:gap-3 max-sm:gap-3 shrink-0'>
+        {/* Bottom content */}
+        <div className='absolute inset-0 flex items-end justify-between pb-12 max-w-[1880px] hidden lg:flex  lg:px-10 mx-auto'>
+          <div className='flex gap-4 max-md:gap-3 max-sm:gap-3'>
             {/* Play / Pause */}
             <button
               onClick={togglePlay}
               className={controlBtn}
-              aria-label={paused ? "Play video" : "Pause video"}>
+              aria-label={paused ? "Play video" : "Pause video"}
+              type='button'>
               {paused ? (
                 <Play
                   size={22}
                   strokeWidth={1.8}
-                  className='transition-transform duration-300 cursor-pointer group-hover:scale-110 max-md:w-4.5 max-md:h-4.5 max-sm:w-4.5 max-sm:h-4.5'
+                  className='cursor-pointer transition-transform duration-300 group-hover:scale-110 max-md:h-4.5 max-md:w-4.5 max-sm:h-4.5 max-sm:w-4.5'
                 />
               ) : (
                 <Pause
                   size={22}
                   strokeWidth={1.8}
-                  className='transition-transform duration-300 cursor-pointer group-hover:scale-110 max-md:w-4.5 max-md:h-4.5 max-sm:w-4.5 max-sm:h-4.5'
+                  className='cursor-pointer transition-transform duration-300 group-hover:scale-110 max-md:h-4.5 max-md:w-4.5 max-sm:h-4.5 max-sm:w-4.5'
                 />
               )}
             </button>
@@ -154,30 +166,95 @@ export default function HeroBanner({
             <button
               onClick={toggleMute}
               className={controlBtn}
-              aria-label={muted ? "Unmute video" : "Mute video"}>
+              aria-label={muted ? "Unmute video" : "Mute video"}
+              type='button'>
               {muted ? (
                 <VolumeX
                   size={22}
                   strokeWidth={1.8}
-                  className='transition-transform duration-300 cursor-pointer group-hover:scale-110 max-md:w-4.5 max-md:h-4.5 max-sm:w-4.5 max-sm:h-4.5'
+                  className='cursor-pointer transition-transform duration-300 group-hover:scale-110 max-md:h-4.5 max-md:w-4.5 max-sm:h-4.5 max-sm:w-4.5'
                 />
               ) : (
                 <Volume2
                   size={22}
                   strokeWidth={1.8}
-                  className='transition-transform duration-300 cursor-pointer group-hover:scale-110 max-md:w-4.5 max-md:h-4.5 max-sm:w-4.5 max-sm:h-4.5'
+                  className='cursor-pointer transition-transform duration-300 group-hover:scale-110 max-md:h-4.5 max-md:w-4.5 max-sm:h-4.5 max-sm:w-4.5'
                 />
               )}
             </button>
           </div>
 
           {/* Headline */}
-          <div className='text-white text-right min-w-0 pl-4 max-sm:pl-3'>
-            <div className='font-extralight tracking-[2px] text-[clamp(28px,4vw,58px)] max-lg:text-[44px] max-md:text-[34px] max-sm:text-[26px] leading-none truncate'>
-              STAY
-            </div>
-            <div className='font-extralight tracking-[2px] text-[clamp(38px,5vw,76px)] max-lg:text-[56px] max-md:text-[44px] max-sm:text-[34px] leading-[1.05] truncate'>
-              SOMEWHERE
+          <div className='min-w-0 max-w-[920px] pl-4 text-left text-white max-lg:max-w-[760px] max-md:max-w-[620px] max-sm:max-w-[92%] max-sm:pl-3'>
+            <h1 className='font-extralight uppercase tracking-[1.5px] text-[clamp(30px,5vw,68px)] leading-[0.9] max-lg:text-[50px] max-md:text-[42px] max-sm:text-[28px]'>
+              WHERE EVERY
+              <br />
+              MOMENT TRANSCENDS
+              <br />
+              THE ORDINARY
+            </h1>
+          </div>
+        </div>
+      </div>
+
+      {/* md / sm layout - same content, only layout adjusted */}
+      <div className='absolute inset-0 lg:hidden'>
+        <div className='flex h-full items-center'>
+          <div className='w-full px-4 md:px-6'>
+            <div className='text-left text-white'>
+              {/* Headline */}
+              <h1 className='font-light uppercase tracking-[0.2px] text-[26px] leading-[1.12] md:text-[38px] md:leading-[1.08]'>
+                WHERE EVERY
+                <br />
+                MOMENT TRANSCENDS
+                <br />
+                THE ORDINARY
+              </h1>
+
+              {/* Controls */}
+              <div className='mt-6 flex gap-3 md:mt-10 md:gap-4'>
+                {/* Play / Pause */}
+                <button
+                  onClick={togglePlay}
+                  className={controlBtn}
+                  aria-label={paused ? "Play video" : "Pause video"}
+                  type='button'>
+                  {paused ? (
+                    <Play
+                      size={18}
+                      strokeWidth={1.8}
+                      className='cursor-pointer transition-transform duration-300 group-hover:scale-110 md:h-5 md:w-5 max-sm:h-4 max-sm:w-4'
+                    />
+                  ) : (
+                    <Pause
+                      size={18}
+                      strokeWidth={1.8}
+                      className='cursor-pointer transition-transform duration-300 group-hover:scale-110 md:h-5 md:w-5 max-sm:h-4 max-sm:w-4'
+                    />
+                  )}
+                </button>
+
+                {/* Volume */}
+                <button
+                  onClick={toggleMute}
+                  className={controlBtn}
+                  aria-label={muted ? "Unmute video" : "Mute video"}
+                  type='button'>
+                  {muted ? (
+                    <VolumeX
+                      size={18}
+                      strokeWidth={1.8}
+                      className='cursor-pointer transition-transform duration-300 group-hover:scale-110 md:h-5 md:w-5 max-sm:h-4 max-sm:w-4'
+                    />
+                  ) : (
+                    <Volume2
+                      size={18}
+                      strokeWidth={1.8}
+                      className='cursor-pointer transition-transform duration-300 group-hover:scale-110 md:h-5 md:w-5 max-sm:h-4 max-sm:w-4'
+                    />
+                  )}
+                </button>
+              </div>
             </div>
           </div>
         </div>
