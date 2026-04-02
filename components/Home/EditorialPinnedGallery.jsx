@@ -204,7 +204,7 @@ export default function EditorialPinnedGallery({
             // progress bar continuously fills with scroll
             const fillScale = Math.min(
               1,
-              Math.max(1 / total, (continuous + 1) / total),
+              Math.max(1 / total, (continuous + 1) / total) * 0.8,
             );
             progressFill.style.transform = `scaleX(${fillScale})`;
 
@@ -228,7 +228,7 @@ export default function EditorialPinnedGallery({
     <section
       ref={sectionRef}
       className={[
-        "relative h-screen w-full py-10 overflow-hidden bg-[#ebe7e4]",
+        "relative h-screen w-full py-10 overflow-hidden bg-[#ebe7e4] p-4 md:p-0",
         className,
       ].join(" ")}
       style={{
@@ -236,7 +236,7 @@ export default function EditorialPinnedGallery({
         backgroundImage:
           "radial-gradient(circle at 18% 22%, rgba(255,232,220,0.42), transparent 18%), radial-gradient(circle at 66% 15%, rgba(194,220,255,0.24), transparent 16%), radial-gradient(circle at 84% 86%, rgba(255,221,206,0.16), transparent 14%)",
       }}>
-      <div className='mx-auto flex h-full w-full max-w-[1720px] flex-col px-5 pt-4 pb-4 sm:px-8 sm:pt-5 sm:pb-5 lg:px-14 lg:pt-5 lg:pb-6 xl:px-20'>
+      <div className='mx-auto flex h-full w-full max-w-[1640px] flex-col pt-4 pb-4 sm:pt-5 sm:pb-5 lg:pt-10 lg:pb-6 '>
         {/* TOP */}
         <div className='grid grid-cols-12 gap-y-5 lg:gap-y-0 lg:gap-x-[42px]'>
           <div className='col-span-12 lg:col-span-6'>
@@ -245,11 +245,7 @@ export default function EditorialPinnedGallery({
             <div
               ref={titleWrapRef}
               className='
-                max-w-[780px]
-                text-[clamp(28px,3.45vw,61px)]
-                leading-[0.92]
-                tracking-[-0.045em]
-                text-[#2a2a2a]
+               max-w-[780px] text-[50px] leading-[50px] font-normal text-black
               '>
               <span className='block'>{safeSlides[0].title}</span>
             </div>
@@ -260,10 +256,10 @@ export default function EditorialPinnedGallery({
               ref={descWrapRef}
               className='
                 max-w-[760px]
-                text-[clamp(14px,1.02vw,20px)]
-                leading-[1.24]
-                tracking-[-0.02em]
-                text-[#4e4e4e]
+                text-[18px]
+                mt-7
+                leading-[25px]
+                text-black
               '>
               <span className='block'>{safeSlides[0].description}</span>
             </div>
@@ -275,17 +271,17 @@ export default function EditorialPinnedGallery({
                   text-[clamp(15px,0.96vw,22px)]
                   leading-none
                   tracking-[-0.03em]
-                  text-[#1d1d1d]
+                  text-black
                 '>
                 <span className='block'>1/{safeSlides.length}</span>
               </div>
 
-              <div className='relative h-[2px] w-full overflow-hidden bg-[#c8c0bb]'>
+              <div className='relative h-[2px] w-[80px] overflow-hidden bg-[#c8c0bb]'>
                 <div
                   ref={progressFillRef}
                   className='absolute inset-y-0 left-0 w-full origin-left bg-[#1d1d1d]'
                   style={{
-                    transform: `scaleX(${1 / safeSlides.length})`,
+                    transform: `scaleX(${2 / safeSlides.length})`,
                   }}
                 />
               </div>
@@ -294,7 +290,7 @@ export default function EditorialPinnedGallery({
         </div>
 
         {/* IMAGE */}
-        <div className='relative mt-6 h-[56vh] overflow-hidden sm:mt-7 sm:h-[58vh] md:mt-8 md:h-[60vh] lg:mt-9 lg:h-[66.5vh] xl:h-[67vh]'>
+        <div className='relative mt-6 h-[56vh] overflow-hidden sm:mt-7 sm:h-[58vh] md:mt-8 md:h-[60vh] lg:mt-9 lg:h-[66.5vh]'>
           <div className='relative h-full w-full overflow-hidden'>
             {safeSlides.map((slide, index) => (
               <div

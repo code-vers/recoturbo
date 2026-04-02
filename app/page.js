@@ -9,7 +9,7 @@ import StaySomewhereCta from "@/components/Home/StaySomewhereCta";
 export default function Page() {
   return (
     <>
-      <HeroBanner videoSrc='/videos/ocean.mp4' brand='room' showMark={true} />
+      <HeroBanner videoSrc='/videos/ocean.mp4' brand='sung' showMark={true} />
 
       <About />
       <EditorialPinnedGallery />

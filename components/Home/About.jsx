@@ -54,26 +54,30 @@ export default function About({
         el.setAttribute("r", `${Math.max(0, r)}`);
       };
 
+      // const compute = () => {
+      //   const rect = textBox.getBoundingClientRect();
+      //   const aspect = rect.height / Math.max(rect.width, 1);
+
+      //   maxRadius = Math.max(1.8, Math.sqrt(1 + aspect * aspect) + 0.18);
+      //   scrollDistance = Math.max(window.innerHeight * 4.5, rect.height * 4);
+      // };
       const compute = () => {
         const rect = textBox.getBoundingClientRect();
         const aspect = rect.height / Math.max(rect.width, 1);
-
         maxRadius = Math.max(1.8, Math.sqrt(1 + aspect * aspect) + 0.18);
-        scrollDistance = Math.max(
-          window.innerHeight * 2.35,
-          rect.height * 3.15,
-        );
+        // scrollDistance = rect.height * 1.1;
+        scrollDistance = rect.height * 2.2;
       };
 
       const render = () => {
         const p = state.progress;
-        const eased = gsap.parseEase("power2.out")(p);
+        const eased = gsap.parseEase("power1.out")(p);
 
         const cx = 0.5;
         const cy = 0.5;
 
         // Exact centered circle expansion
-        const radius = 0.02 + (maxRadius - 0.02) * eased;
+        const radius = 0.005 + (maxRadius - 0.005) * eased * 0.5;
         setCircle(circle, cx, cy, radius);
 
         // Keep shape circular: very subtle smoothing only
@@ -100,7 +104,7 @@ export default function About({
           trigger: section,
           start: "top top",
           end: () => `+=${scrollDistance}`,
-          scrub: 1.45,
+          scrub: 2.2,
           pin: true,
           pinSpacing: true,
           anticipatePin: 1,
