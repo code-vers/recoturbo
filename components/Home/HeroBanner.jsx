@@ -1,7 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Pause, Play, Volume2, VolumeX } from "lucide-react";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 /**
@@ -111,7 +111,7 @@ export default function HeroBanner({
         ].join(" ")}>
         <div className='relative mx-auto w-full px-6 max-lg:px-5 max-md:px-4 max-sm:px-4'>
           {/* Brand */}
-          <div
+          {/* <div
             className={[
               "text-white font-light tracking-[0.5px]",
               "transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
@@ -120,6 +120,27 @@ export default function HeroBanner({
                 : "text-[clamp(60px,6vw,88px)] max-lg:text-[54px] max-md:text-[40px] max-sm:text-[32px]",
             ].join(" ")}>
             <Link href='/'>{compact ? brand : "room residences"}</Link>
+          </div> */}
+          {/* <div>
+            <img
+              // Dynamically change the image source based on `compact` state
+              src={compact ? "room2.svg" : "room.svg"}
+              alt='Your brand image'
+              className='object-contain h-12'
+            />
+          </div> */}
+
+          <div>
+            <img
+              // Dynamically change the image source based on `compact` state
+              src={compact ? "room2.svg" : "room.svg"}
+              alt='Your brand image'
+              className='object-contain h-6 md:h-12 transition-opacity duration-500 ease-in-out'
+              style={{
+                // opacity: compact ? 0.9 : 1,
+                transition: "ease-in-out",
+              }}
+            />
           </div>
         </div>
       </div>
@@ -139,7 +160,7 @@ export default function HeroBanner({
         />
 
         {/* Bottom content */}
-        <div className='absolute inset-0 flex items-end justify-between pb-12 max-w-[1880px] hidden lg:flex  lg:px-10 mx-auto'>
+        <div className='absolute inset-0 items-end justify-between pb-12 max-w-[1880px] hidden lg:flex  lg:px-10 mx-auto'>
           <div className='flex gap-4 max-md:gap-3 max-sm:gap-3'>
             {/* Play / Pause */}
             <button
@@ -185,13 +206,13 @@ export default function HeroBanner({
           </div>
 
           {/* Headline */}
-          <div className='min-w-0 max-w-[920px] pl-4 text-left text-white max-lg:max-w-[760px] max-md:max-w-[620px] max-sm:max-w-[92%] max-sm:pl-3'>
-            <h1 className='font-extralight uppercase tracking-[1.5px] text-[clamp(30px,5vw,68px)] leading-[0.9] max-lg:text-[50px] max-md:text-[42px] max-sm:text-[28px]'>
-              WHERE EVERY
+          <div className='min-w-0 max-w-230 pl-4 text-left text-[#f2f6f6] max-lg:max-w-190 max-md:max-w-155 max-sm:max-w-[92%] max-sm:pl-3'>
+            <h1
+              style={{ fontWeight: "300" }}
+              className='molde-expanded uppercase leading-[50px] text-[50px]'>
+              STAY
               <br />
-              MOMENT TRANSCENDS
-              <br />
-              THE ORDINARY
+              SOMEWHERE
             </h1>
           </div>
         </div>
@@ -199,16 +220,14 @@ export default function HeroBanner({
 
       {/* md / sm layout - same content, only layout adjusted */}
       <div className='absolute inset-0 lg:hidden'>
-        <div className='flex h-full items-center'>
+        <div className='flex h-full items-center mt-14'>
           <div className='w-full px-4 md:px-6'>
             <div className='text-left text-white'>
               {/* Headline */}
-              <h1 className='font-light uppercase tracking-[0.2px] text-[26px] leading-[1.12] md:text-[38px] md:leading-[1.08]'>
-                WHERE EVERY
+              <h1 className='font-light molde-expanded uppercase tracking-[0.2px] text-[26px] leading-[1.12] md:text-[30px] md:leading-[1.08]'>
+                STAY
                 <br />
-                MOMENT TRANSCENDS
-                <br />
-                THE ORDINARY
+                SOMEWHERE
               </h1>
 
               {/* Controls */}
