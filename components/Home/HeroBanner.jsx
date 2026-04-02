@@ -133,7 +133,7 @@ export default function HeroBanner({
           <div>
             <img
               // Dynamically change the image source based on `compact` state
-              src={compact ? "room2.svg" : "room.svg"}
+              src={compact ? "room2.svg" : "Sung.svg"}
               alt='Your brand image'
               className='object-contain h-6 md:h-12 transition-opacity duration-500 ease-in-out'
               style={{
