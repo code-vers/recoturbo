@@ -13,57 +13,61 @@ const DEFAULT_FAQS = [
     question: "Can I rent out my room residence?",
     answer:
       "No. Rental is not permitted. However, you are welcome to lend your home to friends and family.",
-    defaultOpen: true,
+    defaultOpen: false, // Change default to false for all items to collapse initially
   },
   {
     question: "Is co-ownership like a timeshare?",
     answer:
       "No. This is a real ownership structure with clearly defined usage rights, transparent terms, and long-term access to a specific residence.",
+    defaultOpen: false, // Collapse initially
   },
   {
     question: "Who holds the legal ownership?",
     answer:
       "Legal ownership is structured through the residence ownership model and documented clearly before commitment, ensuring each owner understands their rights and responsibilities.",
+    defaultOpen: false, // Collapse initially
   },
   {
     question: "How many nights can I use the residence?",
     answer:
       "Your annual usage depends on the ownership structure of the residence. The allocation is predefined and communicated clearly before purchase.",
+    defaultOpen: false, // Collapse initially
   },
   {
     question: "How does the booking system work?",
     answer:
       "Bookings are handled through a structured owner calendar designed to ensure fairness, transparency, and ease of planning across seasons and preferred dates.",
+    defaultOpen: false, // Collapse initially
   },
   {
     question: "What do the monthly costs cover?",
     answer:
       "They include all operational expenses: local taxes, insurance, garden service, Wi-Fi, maintenance, and administration.",
-    defaultOpen: true,
+    defaultOpen: false, // Collapse initially
   },
   {
     question: "Can I finance my share with a mortgage or company funds?",
     answer:
       "No. Only private capital can be used. Financing must be arranged independently.",
-    defaultOpen: true,
+    defaultOpen: false, // Collapse initially
   },
   {
     question: "Can the price of my investment increase?",
     answer:
       "No. Unlike other co-sharing models, you know the full investment upfront — no surprises, thus the investment price is fixed at €150,000 and will not increase due to inflation or unforeseen costs.",
-    defaultOpen: true,
+    defaultOpen: false, // Collapse initially
   },
   {
     question: "Do I know what I'm buying before committing?",
     answer:
       "Absolutely. With Vipp Residences, the location, architecture, interior and floorplans are all defined and communicated before purchase. What you see is what you get — a home designed by iconic architects in a known destination.",
-    defaultOpen: true,
+    defaultOpen: false, // Collapse initially
   },
   {
     question: "Can I store personal belongings at the residence?",
     answer:
       "Yes. Each owner has access to a dedicated owners closet, allowing you to safely store personal items between stays. This ensures convenience and comfort without the need to bring everything each time.",
-    defaultOpen: true,
+    defaultOpen: false, // Collapse initially
   },
 ];
 
@@ -134,27 +138,27 @@ export default function LuxuryFaqSection({
     gsap.to(outer, {
       height: isOpen ? contentHeight : 0,
       opacity: isOpen ? 1 : 0,
-      duration: 0.62,
-      ease: "power3.inOut",
+      duration: 0.4, // Faster transition
+      ease: "power2.inOut", // Smoother ease
     });
 
     gsap.to(inner, {
       y: isOpen ? 0 : -10,
       opacity: isOpen ? 1 : 0,
-      duration: 0.48,
-      ease: "power3.out",
+      duration: 0.3, // Faster transition
+      ease: "power2.out", // Smoother ease
     });
 
     gsap.to(icon, {
       rotate: isOpen ? 180 : 0,
-      duration: 0.52,
-      ease: "power3.out",
+      duration: 0.3, // Faster transition
+      ease: "power2.out", // Smoother ease
     });
 
     gsap.to(button, {
       color: isOpen ? "rgba(14,14,18,0.96)" : "rgba(24,24,28,0.82)",
-      duration: 0.34,
-      ease: "power2.out",
+      duration: 0.2, // Faster transition
+      ease: "power2.out", // Smoother ease
     });
   };
 
@@ -204,7 +208,7 @@ export default function LuxuryFaqSection({
       });
 
       const tl = gsap.timeline({
-        defaults: { ease: "power3.out" },
+        defaults: { ease: "power2.out" }, // Faster easing for smoothness
         scrollTrigger: {
           trigger: section,
           start: "top 78%",
@@ -214,7 +218,7 @@ export default function LuxuryFaqSection({
 
       tl.to(lineRef.current, {
         scaleX: 1,
-        duration: 0.75,
+        duration: 0.5, // Faster transition
       })
         .to(
           titleRef.current,
@@ -222,35 +226,35 @@ export default function LuxuryFaqSection({
             y: 0,
             opacity: 1,
             filter: "blur(0px)",
-            duration: 0.95,
+            duration: 0.7, // Faster transition
           },
-          "-=0.4",
+          "-=0.3",
         )
         .to(
           dividerRefs.current.filter(Boolean),
           {
             scaleX: 1,
             opacity: 1,
-            duration: 0.75,
-            stagger: 0.045,
+            duration: 0.5, // Faster transition
+            stagger: 0.035, // Faster stagger
           },
-          "-=0.45",
+          "-=0.3",
         )
         .to(
           itemRefs.current.filter(Boolean),
           {
             y: 0,
             opacity: 1,
-            duration: 0.7,
+            duration: 0.5, // Faster transition
             stagger: 0.05,
           },
-          "-=0.64",
+          "-=0.5",
         );
 
       if (bgGlowRef.current) {
         gsap.to(bgGlowRef.current, {
           backgroundPosition: "54% 0%, 82% 86%, 50% 50%",
-          duration: 10,
+          duration: 8, // Slightly faster glow
           ease: "sine.inOut",
           repeat: -1,
           yoyo: true,
@@ -262,7 +266,7 @@ export default function LuxuryFaqSection({
           xPercent: 5,
           yPercent: -3,
           rotate: 2.5,
-          duration: 9,
+          duration: 8, // Slightly faster beam
           ease: "sine.inOut",
           repeat: -1,
           yoyo: true,
@@ -272,7 +276,7 @@ export default function LuxuryFaqSection({
       if (bgNoiseRef.current) {
         gsap.to(bgNoiseRef.current, {
           opacity: 0.12,
-          duration: 3.2,
+          duration: 2.8, // Slightly faster noise
           ease: "sine.inOut",
           repeat: -1,
           yoyo: true,
@@ -288,12 +292,12 @@ export default function LuxuryFaqSection({
         const enter = () => {
           gsap.to(button, {
             x: 2,
-            duration: 0.24,
+            duration: 0.18, // Faster hover transition
             ease: "power2.out",
           });
           gsap.to(icon, {
             x: -2,
-            duration: 0.24,
+            duration: 0.18, // Faster hover transition
             ease: "power2.out",
           });
         };
@@ -301,12 +305,12 @@ export default function LuxuryFaqSection({
         const leave = () => {
           gsap.to(button, {
             x: 0,
-            duration: 0.28,
+            duration: 0.2, // Faster hover transition
             ease: "power2.out",
           });
           gsap.to(icon, {
             x: 0,
-            duration: 0.28,
+            duration: 0.2, // Faster hover transition
             ease: "power2.out",
           });
         };
@@ -333,11 +337,11 @@ export default function LuxuryFaqSection({
     <section
       ref={sectionRef}
       className={[
-        "relative isolate overflow-hidden bg-[#e5e5e3] text-[#111215]",
+        "relative isolate overflow-hidden bg-[#e7d9d4] text-[#111215]",
         className,
       ].join(" ")}>
       {/* base gradient */}
-      <div className='absolute inset-0 bg-[linear-gradient(180deg,#e3e3e3_0%,#d6d6d6_45%,#d9d9d9_100%)]' />
+      {/* <div className='absolute inset-0 bg-[linear-gradient(180deg,#e3e3e3_0%,#d6d6d6_45%,#d9d9d9_100%)]' /> */}
 
       {/* brighter crossing lights */}
       <div className='absolute inset-0 opacity-100'>
@@ -354,20 +358,18 @@ export default function LuxuryFaqSection({
       <div className='absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.18),transparent_35%),radial-gradient(circle_at_bottom,rgba(0,0,0,0.04),transparent_40%)]' />
       <div
         ref={shellRef}
-        className='relative mx-auto min-h-[830px] max-w-[1512px] px-[42px] py-[58px] sm:px-[64px] lg:px-[82px] xl:px-[102px]'>
-        <div className='grid min-h-[714px] grid-cols-1 lg:grid-cols-[128px_minmax(0,1fr)]'>
-          {/* left block */}
-          <div className='pt-[50px]'>
-            <div ref={lineRef} className='h-[6px] w-[124px] bg-[#0f1115]' />
-            <h2
-              ref={titleRef}
-              className='mt-[52px] text-[54px] font-normal leading-[0.9] tracking-[-0.055em] text-[#0f1115] sm:text-[62px] xl:text-[66px]'>
-              FAQ.
-            </h2>
-          </div>
-
+        className='relative mx-auto py-[50px]  max-w-[1512px] px-[42px]'>
+        <div className='pt-[50px]'>
+          <div ref={lineRef} className='h-[2px] w-[30px] bg-[#0f1115]' />
+          <h2
+            ref={titleRef}
+            className='mt-[10px] molde-expanded text-[54px] font-normal leading-[0.9] tracking-[-0.055em] text-[#0f1115] sm:text-[62px] xl:text-[66px]'>
+            FAQ.
+          </h2>
+        </div>
+        <div className=''>
           {/* faq area */}
-          <div className='pt-[186px]'>
+          <div className='pt-[36px]'>
             <div className='mx-auto w-full max-w-[1064px]'>
               {safeFaqs.map((item, index) => {
                 const isOpen = !!openItems[index];

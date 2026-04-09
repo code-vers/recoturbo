@@ -11,8 +11,8 @@ const DEFAULT_CONTENT = {
     "The Red Sea destination is 500km north of Jeddah, between the Saudi towns of AlWajh and Umluj. With its own dedicated Red Sea International Airport, the destination is easily accessible to visitors from around the world.",
   leftLabel: "UK MAP",
   rightLabel: "BAHRAIN MAP",
-  leftMapImage: "/uk-map.jpg",
-  rightMapImage: "/bahrain-map.jpg",
+  leftMapImage: "/UK.png",
+  rightMapImage: "/Baharain.png",
 };
 
 export default function LocationArrivalMapsSection({
@@ -162,36 +162,33 @@ export default function LocationArrivalMapsSection({
     <section
       ref={sectionRef}
       className={[
-        "relative w-full overflow-hidden bg-[#e7d9d4]",
+        "relative w-full px-2 overflow-hidden bg-[#e7d9d4]",
         className,
       ].join(" ")}>
-      <div className='mx-auto w-full max-w-[1529px]'>
+      <div className='mx-auto w-full  max-w-[1880px]'>
         {/* Top content */}
-        <div className='grid grid-cols-1 gap-y-10 px-[42px] pb-0 pt-[68px] md:grid-cols-[1fr_1fr] md:gap-x-[56px] lg:px-[70px] xl:px-[86px]'>
-          <div className='max-w-[560px]'>
-            <div ref={introLineRef} className='h-[2px] w-[33px] bg-[#111111]' />
+        <div className=' max-w-[1640px] mx-auto w-full'>
+          <div className='grid grid-cols-1 gap-y-10 pb-0 pt-[68px] md:grid-cols-[1fr_1fr] md:gap-x-[56px]'>
+            <div className=''>
+              <div
+                ref={introLineRef}
+                className='h-[2px] w-[33px] bg-[#111111]'
+              />
 
-            <h2
-              ref={titleRef}
-              className='whitespace-pre-line pt-[36px] text-[34px] font-normal uppercase leading-[0.98] tracking-[-0.05em] text-[#111111] sm:text-[42px] md:text-[50px] lg:text-[55px]'
-              style={{
-                fontFamily:
-                  'var(--font-sans, "Helvetica Neue", Helvetica, Arial, sans-serif)',
-              }}>
-              {safeContent.title}
-            </h2>
-          </div>
+              <h2
+                ref={titleRef}
+                className='pt-[36px] molde-expanded text-[34px] font-normal uppercase leading-[50px] text-[#111111] sm:text-[42px] md:text-[50px]'>
+                {safeContent.title}
+              </h2>
+            </div>
 
-          <div className='flex justify-start md:justify-end'>
-            <p
-              ref={descRef}
-              className='max-w-[533px] pt-[0px] text-[18px] font-normal leading-[1.32] tracking-[-0.025em] text-[#252525] sm:text-[20px] lg:text-[21px]'
-              style={{
-                fontFamily:
-                  'var(--font-sans, "Helvetica Neue", Helvetica, Arial, sans-serif)',
-              }}>
-              {safeContent.description}
-            </p>
+            <div className='flex justify-center items-center'>
+              <p
+                ref={descRef}
+                className='pt-[0px] text-[18px] font-normal leading-[25px]  text-[#252525]'>
+                {safeContent.description}
+              </p>
+            </div>
           </div>
         </div>
 
@@ -233,7 +230,7 @@ function MapPanel({
     <div
       ref={refProp}
       className={[
-        "relative h-[360px] overflow-hidden sm:h-[430px] md:h-[520px] lg:h-[563px]",
+        "relative h-[360px] mx-1.5 my-1.5 md:my-0 overflow-hidden sm:h-[430px] md:h-[520px] lg:h-[882px]",
         withDivider ? "md:border-l md:border-l-[#e7d9d4]" : "",
       ].join(" ")}>
       <div
@@ -254,25 +251,10 @@ function MapPanel({
         )}
       </div>
 
-      <div
-        data-map-overlay
-        className='absolute inset-0 opacity-10'
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(2,8,18,0.14) 0%, rgba(2,8,18,0.08) 42%, rgba(2,8,18,0.18) 100%)",
-        }}
-      />
-
-      <div className='absolute inset-0 bg-[#081628]/[0.84]' />
-
       <div className='absolute inset-0 flex items-center justify-center px-8 text-center'>
         <div
           ref={labelRef}
-          className='text-[44px] font-light uppercase leading-none tracking-[-0.045em] text-[#e8d6d0] sm:text-[58px] md:text-[68px] lg:text-[62px] xl:text-[64px]'
-          style={{
-            fontFamily:
-              'var(--font-sans, "Helvetica Neue", Helvetica, Arial, sans-serif)',
-          }}>
+          className='text-[44px] molde-expanded font-light uppercase leading-none tracking-[-0.045em] text-black sm:text-[58px] md:text-[68px] lg:text-[62px] xl:text-[64px]'>
           {label}
         </div>
       </div>

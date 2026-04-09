@@ -66,6 +66,11 @@ export default function EditorialPinnedGallery({
       return;
     }
 
+    // GPU-accelerate all image layers upfront — no scale, just compositing
+    images.forEach((img) => {
+      img.style.willChange = "opacity";
+    });
+
     const mm = gsap.matchMedia();
 
     mm.add(
@@ -76,7 +81,6 @@ export default function EditorialPinnedGallery({
       },
       (context) => {
         const { isDesktop, isTablet } = context.conditions;
-
         const total = safeSlides.length;
 
         const setTextImmediate = (index) => {
@@ -88,17 +92,17 @@ export default function EditorialPinnedGallery({
 
         const animateTextChange = (index) => {
           const slide = safeSlides[index];
+          const targets = [titleWrap, descWrap, countWrap];
 
-          const tl = gsap.timeline({
-            defaults: { ease: "power3.out" },
-          });
+          const tl = gsap.timeline({ defaults: { overwrite: true } });
 
-          tl.to([titleWrap, descWrap, countWrap], {
-            y: 8,
+          tl.to(targets, {
+            y: -12,
             opacity: 0,
-            duration: 0.16,
-            stagger: 0.02,
-            overwrite: true,
+            clipPath: "inset(0 0 100% 0)",
+            duration: 0.38,
+            stagger: 0.04,
+            ease: "power2.inOut",
           });
 
           tl.add(() => {
@@ -108,13 +112,19 @@ export default function EditorialPinnedGallery({
           });
 
           tl.fromTo(
-            [titleWrap, descWrap, countWrap],
-            { y: 10, opacity: 0 },
+            targets,
+            {
+              y: 20,
+              opacity: 0,
+              clipPath: "inset(100% 0 0% 0)",
+            },
             {
               y: 0,
               opacity: 1,
-              duration: 0.42,
-              stagger: 0.03,
+              clipPath: "inset(0% 0 0% 0)",
+              duration: 0.85,
+              stagger: 0.06,
+              ease: "expo.out",
             },
           );
         };
@@ -123,7 +133,7 @@ export default function EditorialPinnedGallery({
           dots.forEach((dot, i) => {
             gsap.to(dot, {
               opacity: i <= index ? 1 : 0.22,
-              duration: 0.28,
+              duration: 0.6,
               ease: "power2.out",
               overwrite: true,
             });
@@ -132,8 +142,9 @@ export default function EditorialPinnedGallery({
 
         const showSlide = (index, immediate = false) => {
           const clamped = Math.max(0, Math.min(index, total - 1));
-
           if (!immediate && clamped === activeIndexRef.current) return;
+
+          const prev = activeIndexRef.current;
           activeIndexRef.current = clamped;
 
           if (immediate) {
@@ -143,22 +154,51 @@ export default function EditorialPinnedGallery({
           }
 
           images.forEach((img, i) => {
-            gsap.to(img, {
-              autoAlpha: i === clamped ? 1 : 0,
-              scale: i === clamped ? 1 : 1.02,
-              duration: immediate ? 0 : 0.9,
-              ease: "power3.out",
-              overwrite: true,
-            });
+            if (immediate) {
+              gsap.set(img, {
+                autoAlpha: i === clamped ? 1 : 0,
+                force3D: true,
+              });
+              return;
+            }
+
+            if (i === clamped) {
+              // New image waits for old to mostly vanish, then fades in cleanly
+              gsap.fromTo(
+                img,
+                { autoAlpha: 0, force3D: true, immediateRender: false },
+                {
+                  autoAlpha: 1,
+                  force3D: true,
+                  duration: 2.0,
+                  delay: 0.55,
+                  ease: "power1.inOut",
+                  overwrite: true,
+                },
+              );
+            } else if (i === prev) {
+              // Old image dissolves away slowly — no scale, no jitter
+              gsap.to(img, {
+                autoAlpha: 0,
+                force3D: true,
+                duration: 2.2,
+                ease: "power1.inOut",
+                overwrite: true,
+              });
+            } else {
+              // Any other slide: instantly hidden
+              gsap.set(img, { autoAlpha: 0, force3D: true });
+            }
           });
 
           updateDots(clamped);
         };
 
+        // Initial state
         images.forEach((img, i) => {
           gsap.set(img, {
             autoAlpha: i === 0 ? 1 : 0,
-            scale: i === 0 ? 1 : 1.02,
+            force3D: true,
           });
         });
 
@@ -189,7 +229,7 @@ export default function EditorialPinnedGallery({
           end: `+=${totalDistance}`,
           pin: true,
           pinSpacing: true,
-          scrub: 1.15,
+          scrub: 3.2,
           anticipatePin: 1,
           invalidateOnRefresh: true,
           fastScrollEnd: false,
@@ -198,15 +238,18 @@ export default function EditorialPinnedGallery({
               self.progress * totalDistance,
               revealDistance,
             );
-
             const continuous = scrolled / perSlideDistance;
 
-            // progress bar continuously fills with scroll
             const fillScale = Math.min(
               1,
               Math.max(1 / total, (continuous + 1) / total) * 0.8,
             );
-            progressFill.style.transform = `scaleX(${fillScale})`;
+            gsap.to(progressFill, {
+              scaleX: fillScale,
+              duration: 0.9,
+              ease: "power2.out",
+              overwrite: true,
+            });
 
             const nextIndex = Math.min(total - 1, Math.floor(continuous));
             if (nextIndex !== activeIndexRef.current) {
@@ -225,91 +268,79 @@ export default function EditorialPinnedGallery({
   }, [safeSlides]);
 
   return (
-    <section
-      ref={sectionRef}
-      className={[
-        "relative h-screen w-full py-10 overflow-hidden bg-[#ebe7e4] p-4 md:p-0",
-        className,
-      ].join(" ")}
-      style={{
-        isolation: "isolate",
-        backgroundImage:
-          "radial-gradient(circle at 18% 22%, rgba(255,232,220,0.42), transparent 18%), radial-gradient(circle at 66% 15%, rgba(194,220,255,0.24), transparent 16%), radial-gradient(circle at 84% 86%, rgba(255,221,206,0.16), transparent 14%)",
-      }}>
-      <div className='mx-auto flex h-full w-full max-w-[1640px] flex-col pt-4 pb-4 sm:pt-5 sm:pb-5 lg:pt-10 lg:pb-6 '>
-        {/* TOP */}
-        <div className='grid grid-cols-12 gap-y-5 lg:gap-y-0 lg:gap-x-[42px]'>
-          <div className='col-span-12 lg:col-span-6'>
-            <div className='mb-4 h-[2px] w-[40px] bg-[#2b2b2b]/75 lg:mb-5' />
-
-            <div
-              ref={titleWrapRef}
-              className='
-               max-w-[780px] text-[50px] leading-[50px] font-normal text-black
-              '>
-              <span className='block'>{safeSlides[0].title}</span>
-            </div>
-          </div>
-
-          <div className='col-span-12 lg:col-span-6 lg:pt-[14px]'>
-            <div
-              ref={descWrapRef}
-              className='
-                max-w-[760px]
-                text-[18px]
-                mt-7
-                leading-[25px]
-                text-black
-              '>
-              <span className='block'>{safeSlides[0].description}</span>
-            </div>
-
-            <div className='mt-8 flex w-[120px] flex-col gap-[7px] lg:mt-11'>
-              <div
-                ref={countWrapRef}
-                className='
-                  text-[clamp(15px,0.96vw,22px)]
-                  leading-none
-                  tracking-[-0.03em]
-                  text-black
-                '>
-                <span className='block'>1/{safeSlides.length}</span>
-              </div>
-
-              <div className='relative h-[2px] w-[80px] overflow-hidden bg-[#c8c0bb]'>
+    <div>
+      <section
+        ref={sectionRef}
+        className={[
+          "relative h-screen w-full py-10 pt-40 md:pt-0 overflow-hidden bg-[#ebe7e4] p-4 md:p-0",
+          className,
+        ].join(" ")}
+        style={{
+          isolation: "isolate",
+          backgroundImage:
+            "radial-gradient(circle at 18% 22%, rgba(255,232,220,0.42), transparent 18%), radial-gradient(circle at 66% 15%, rgba(194,220,255,0.24), transparent 16%), radial-gradient(circle at 84% 86%, rgba(255,221,206,0.16), transparent 14%)",
+        }}>
+        <div>
+          <div className='mx-auto flex h-full w-full max-w-[1640px] flex-col pt-4 pb-4 sm:pt-5 sm:pb-5 lg:pt-10 lg:pb-6'>
+            <div className='grid grid-cols-12 gap-y-5 lg:gap-y-0 lg:gap-x-[42px] h-[200px] md:h-auto'>
+              <div className='col-span-12 lg:col-span-6'>
+                <div className='mb-4 h-[2px] w-[40px] bg-[#2b2b2b]/75 lg:mb-5' />
                 <div
-                  ref={progressFillRef}
-                  className='absolute inset-y-0 left-0 w-full origin-left bg-[#1d1d1d]'
-                  style={{
-                    transform: `scaleX(${2 / safeSlides.length})`,
-                  }}
-                />
+                  ref={titleWrapRef}
+                  className='max-w-[780px] molde-expanded text-[24px] md:text-[50px] leading-[30px] md:leading-[50px] font-normal text-black'>
+                  <span className='block'>{safeSlides[0].title}</span>
+                </div>
+              </div>
+
+              <div className='col-span-12 lg:col-span-6 lg:pt-[14px]'>
+                <div
+                  ref={descWrapRef}
+                  className='max-w-[800px] text-[15px] md:text-[18px] md:mt-7 leading-[25px] text-black'>
+                  <span className='block'>{safeSlides[0].description}</span>
+                </div>
+
+                <div className='mt-8 flex w-[120px] flex-col gap-[7px] lg:mt-11'>
+                  <div
+                    ref={countWrapRef}
+                    className='text-[clamp(15px,0.96vw,22px)] leading-none tracking-[-0.03em] text-black'>
+                    <span className='block'>1/{safeSlides.length}</span>
+                  </div>
+
+                  <div className='relative h-[2px] w-[80px] overflow-hidden bg-[#c8c0bb]'>
+                    <div
+                      ref={progressFillRef}
+                      className='absolute inset-y-0 left-0 w-full origin-left bg-[#1d1d1d]'
+                      style={{
+                        transform: `scaleX(${2 / safeSlides.length})`,
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className='relative mt-12 h-[56vh] overflow-hidden sm:mt-7 sm:h-[58vh] md:mt-8 md:h-[60vh] lg:mt-9 lg:h-[66.5vh]'>
+              <div className='relative h-full w-full overflow-hidden'>
+                {safeSlides.map((slide, index) => (
+                  <div
+                    key={`${slide.title}-${index}`}
+                    ref={(el) => {
+                      imageRefs.current[index] = el;
+                    }}
+                    className='absolute px-2 md:px-4 inset-0'>
+                    <img
+                      src={slide.image}
+                      alt={slide.title}
+                      className='h-[200px] md:h-[550.59] w-full object-cover mt-12'
+                      draggable='false'
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
-
-        {/* IMAGE */}
-        <div className='relative mt-6 h-[56vh] overflow-hidden sm:mt-7 sm:h-[58vh] md:mt-8 md:h-[60vh] lg:mt-9 lg:h-[66.5vh]'>
-          <div className='relative h-full w-full overflow-hidden'>
-            {safeSlides.map((slide, index) => (
-              <div
-                key={`${slide.title}-${index}`}
-                ref={(el) => {
-                  imageRefs.current[index] = el;
-                }}
-                className='absolute inset-0'>
-                <img
-                  src={slide.image}
-                  alt={slide.title}
-                  className='h-full w-full object-cover'
-                  draggable='false'
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
