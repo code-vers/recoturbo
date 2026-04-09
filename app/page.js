@@ -17,8 +17,8 @@ export default function Page() {
       <LuxuryFaqSection />
       <LocationArrivalMapsSection
         content={{
-          leftMapImage: "/ab.jpg",
-          rightMapImage: "/bc.jpg",
+          leftMapImage: "/UK.png",
+          rightMapImage: "/Baharain.png",
         }}
       />
       <StaySomewhereCta />

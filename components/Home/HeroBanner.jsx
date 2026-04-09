@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Pause, Play, Volume2, VolumeX } from "lucide-react";
@@ -105,41 +104,20 @@ export default function HeroBanner({
           "fixed left-0 right-0 z-40 flex items-center",
           "transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
           compact
-            ? "top-0 h-16 bg-black/20 backdrop-blur-md"
+            ? "top-0 h-[45px] bg-black backdrop-blur-md"
             : "top-0 h-24 bg-transparent",
           "max-lg:h-20 max-md:h-16 max-sm:h-14",
         ].join(" ")}>
         <div className='relative mx-auto w-full px-6 max-lg:px-5 max-md:px-4 max-sm:px-4'>
           {/* Brand */}
-          {/* <div
-            className={[
-              "text-white font-light tracking-[0.5px]",
-              "transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
-              compact
-                ? "text-[46px] max-lg:text-[40px] max-md:text-[32px] max-sm:text-[26px]"
-                : "text-[clamp(60px,6vw,88px)] max-lg:text-[54px] max-md:text-[40px] max-sm:text-[32px]",
-            ].join(" ")}>
-            <Link href='/'>{compact ? brand : "room residences"}</Link>
-          </div> */}
-          {/* <div>
-            <img
-              // Dynamically change the image source based on `compact` state
-              src={compact ? "room2.svg" : "room.svg"}
-              alt='Your brand image'
-              className='object-contain h-12'
-            />
-          </div> */}
-
           <div>
             <img
               // Dynamically change the image source based on `compact` state
               src={compact ? "room2.svg" : "Sung.svg"}
               alt='Your brand image'
-              className='object-contain h-6 md:h-12 transition-opacity duration-500 ease-in-out'
-              style={{
-                // opacity: compact ? 0.9 : 1,
-                transition: "ease-in-out",
-              }}
+              className={`object-contain transition-opacity duration-500 ease-in-out ${
+                compact ? "h-6" : "h-12" // Resize logo when scrolling
+              }`}
             />
           </div>
         </div>
