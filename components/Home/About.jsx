@@ -17,7 +17,6 @@ export default function About({
   const dispRef = useRef(null);
   const blurRef = useRef(null);
   const blackLayerRef = useRef(null);
-  // 🔴 NEW: ref to the <svg> element we'll use as a clipPath workaround
   const svgRef = useRef(null);
 
   useLayoutEffect(() => {
@@ -90,8 +89,6 @@ export default function About({
         blackLayer.style.opacity = "1";
 
         // 🔴 FIX 2: Force Safari to repaint the SVG filter/mask
-        // Safari caches SVG filter results aggressively; toggling a harmless
-        // attribute on the root <svg> breaks the cache each frame.
         if (isSafari && svg) {
           svg.setAttribute("data-tick", p.toFixed(6));
         }
@@ -137,14 +134,12 @@ export default function About({
   const filterId = `about-liquid-${uid}`;
 
   return (
-    // 🔴 FIX 3: Remove `isolation: isolate` — breaks Safari mask stacking context
     <section
       ref={sectionRef}
       className={[
         "relative h-screen w-full overflow-hidden bg-[#e9e4e1]",
         className,
       ].join(" ")}>
-      {/* ... your background layers unchanged ... */}
       <div className='absolute top-0 left-0 right-0 h-2 bg-black opacity-50' />
       <div className='absolute inset-0 bg-[linear-gradient(180deg,#e3e3e3_0%,#d6d6d6_45%,#d9d9d9_100%)]' />
       <div className='absolute inset-0 opacity-100'>
@@ -173,8 +168,6 @@ export default function About({
                 style={{
                   color: "#0a0a0a",
                   opacity: 1,
-                  // 🔴 FIX 4: Always declare both prefixed and unprefixed,
-                  // and do NOT use will-change here — it breaks Safari compositing
                   WebkitMaskImage: `url(#${maskId})`,
                   WebkitMask: `url(#${maskId})`,
                   WebkitMaskRepeat: "no-repeat",
@@ -182,19 +175,16 @@ export default function About({
                   mask: `url(#${maskId})`,
                   maskRepeat: "no-repeat",
                   maskSize: "100% 100%",
-                  // 🔴 REMOVED: willChange — causes Safari to composite before mask resolves
                 }}>
                 {text}
               </p>
 
-              {/* 🔴 FIX 5: Add ref to svg so we can poke it each frame to force Safari repaint */}
               <svg
                 ref={svgRef}
                 className='pointer-events-none absolute inset-0 h-full w-full'
                 viewBox='0 0 1 1'
                 preserveAspectRatio='none'
                 aria-hidden='true'
-                // 🔴 FIX 6: xmlns is required for Safari to treat this as a valid SVG mask source
                 xmlns='http://www.w3.org/2000/svg'>
                 <defs>
                   <filter
@@ -203,11 +193,7 @@ export default function About({
                     y='-50%'
                     width='200%'
                     height='200%'
-                    // 🔴 FIX 7: Change to userSpaceOnUse — objectBoundingBox is
-                    // unreliable in Safari when the SVG is sized via CSS
                     filterUnits='userSpaceOnUse'
-                    // 🔴 FIX 8: color-interpolation-filters must be sRGB for
-                    // feDisplacementMap to work correctly on WebKit
                     colorInterpolationFilters='sRGB'>
                     <feTurbulence
                       ref={turbRef}
@@ -236,8 +222,6 @@ export default function About({
 
                   <mask
                     id={maskId}
-                    // 🔴 FIX 9: Match filterUnits — use userSpaceOnUse with 0–1 coords
-                    // since viewBox="0 0 1 1" makes the user space 0–1
                     maskUnits='objectBoundingBox'
                     maskContentUnits='objectBoundingBox'>
                     <rect x='0' y='0' width='1' height='1' fill='black' />
