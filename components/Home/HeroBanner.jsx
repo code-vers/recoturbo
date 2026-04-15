@@ -23,7 +23,7 @@ import { useEffect, useRef, useState } from "react";
  * @returns {JSX.Element} Hero banner section.
  */
 export default function HeroBanner({
-  videoSrc = "/videos/ocean.mp4",
+  videoSrc = "/videos/roomV.mp4",
   brand = "room",
 }) {
   const sentinelRef = useRef(null);
@@ -113,7 +113,7 @@ export default function HeroBanner({
           <div>
             <img
               // Dynamically change the image source based on `compact` state
-              src={compact ? "room2.svg" : "Sung.svg"}
+              src={compact ? "onlyRoom.svg" : "roomLogo2.svg"}
               alt='Your brand image'
               className={`object-contain transition-opacity duration-500 ease-in-out ${
                 compact ? "h-6" : "h-12" // Resize logo when scrolling
