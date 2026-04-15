@@ -23,7 +23,7 @@ import { useEffect, useRef, useState } from "react";
  * @returns {JSX.Element} Hero banner section.
  */
 export default function HeroBanner({
-  videoSrc = "/videos/roomV.mp4",
+  videoSrc = "/videos/VRoom.mp4",
   brand = "room",
 }) {
   const sentinelRef = useRef(null);
