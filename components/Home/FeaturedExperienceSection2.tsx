@@ -8,47 +8,35 @@ import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
 
 const DEFAULT_SLIDES = [
   {
-    eyebrow: "INNOVATIVE HOMES ANYWHERE IN THE WORLD",
-    title: "01 Quick on site assembly",
+    eyebrow: "From Vision → to Profit",
+    title: "Choose your dream location",
     description:
-      "Our houses are delivered as ready-to-assemble kits and built directly on-site in just 7–10 days — with no need for a foundation or heavy construction work. Perfect for quickly and efficiently launching glamping sites, rentals, or for private use.",
+      "Do you have a beautiful piece of land?We’ll help turn it into a place your guests will fall in love with.",
     cta: "Explore More Experiences",
-    image: "/showcase/rec1.webp",
+    image:
+      "https://optim.tildacdn.one/tild6362-6335-4237-a134-393930356366/-/resize/560x/-/format/webp/_22.jpg.webp",
   },
   {
-    eyebrow: "INNOVATIVE HOMES ANYWHERE IN THE WORLD",
-    title: "02 Aesthetics and durability",
+    eyebrow: "From Vision → to Profit",
+    title: "We bring the houses",
     description:
-      "Inspired by modern design, our structures combine visual elegance with strong and reliable assembly. A timeless style built to last — both beautiful and dependable.",
+      "We deliver fully equipped house kits — ready for installation and rental. Each design is created for comfort, harmony with nature, and memorable Instagram moments.",
     cta: "Explore More Experiences",
-    image: "/showcase/rec2.webp",
+    image:
+      "https://optim.tildacdn.one/tild3965-6339-4766-b432-636432313139/-/resize/560x/-/format/webp/Free-HD-Truck-Wallpa.jpg.webp",
   },
   {
-    eyebrow: "INNOVATIVE HOMES ANYWHERE IN THE WORLD",
-    title: "03 Easy installation on any site",
+    eyebrow: "From Vision → to Profit",
+    title: "Launch your retreat center",
     description:
-      "Install on forest plots, mountain slopes, or by the sea — with no need for utility connections and minimal environmental impact. True autonomy and placement flexibility.",
+      "We’ll support you every step of the way — from assembly to launch. In just a few weeks, you’ll turn your land into a fully operating rental business, ready to welcome your first guests.",
     cta: "Explore More Experiences",
-    image: "/showcase/rec3.webp",
-  },
-  {
-    eyebrow: "INNOVATIVE HOMES ANYWHERE IN THE WORLD",
-    title: "04 Smart investment",
-    description:
-      "High profitability — ideal for Airbnb or tourist rentals. Fast return on investment and steady income.",
-    cta: "Explore More Experiences",
-    image: "/showcase/rec4.webp",
-  },
-  {
-    eyebrow: "INNOVATIVE HOMES ANYWHERE IN THE WORLD",
-    title: "Want to know more details?",
-    description: "Learn more about our fast and simple installation process.",
-    cta: "Explore More Experiences",
-    image: "/showcase/rec5.webp",
+    image:
+      "https://optim.tildacdn.one/tild6262-3066-4264-b933-303535653732/-/resize/560x/-/format/webp/IMG_3255.JPG.webp",
   },
 ];
 
-export default function FeaturedExperienceSection({
+export default function FeaturedExperienceSection2({
   slides = DEFAULT_SLIDES,
   className = "",
 }) {

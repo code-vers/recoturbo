@@ -162,22 +162,22 @@ export default function LocationArrivalMapsSection({
     <section
       ref={sectionRef}
       className={[
-        "relative w-full px-2 overflow-hidden bg-[#e7d9d4]",
+        "relative w-full px-4 overflow-hidden bg-[#e7d9d4]",
         className,
       ].join(" ")}>
       <div className='mx-auto w-full  max-w-[1880px]'>
         {/* Top content */}
         <div className=' max-w-[1640px] mx-auto w-full'>
-          <div className='grid grid-cols-1 gap-y-10 pb-0 pt-[68px] md:grid-cols-[1fr_1fr] md:gap-x-[56px]'>
+          <div className='grid grid-cols-1 gap-y-10 pb-0 pt-[68px] lg:grid-cols-[1fr_1fr] md:gap-x-[56px]'>
             <div className=''>
               <div
                 ref={introLineRef}
-                className='h-[2px] w-[33px] bg-[#111111]'
+                className='h-[2px] w-[33px] ml-[2.5px] md:ml-1.5 bg-[#111111]'
               />
 
               <h2
                 ref={titleRef}
-                className='pt-[36px] molde-expanded text-[34px] font-normal uppercase leading-[50px] text-[#111111] sm:text-[42px] md:text-[50px]'>
+                className='pt-[36px] molde-expanded text-[24px] max-md:text-[22px] font-normal uppercase leading-[30px] md:leading-[50px] text-[#111111] md:text-[50px]'>
                 {safeContent.title}
               </h2>
             </div>

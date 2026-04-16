@@ -255,7 +255,7 @@ export default function About({
           <div className='mb-6 h-[2px] w-10 bg-[#1b1b1b]' />
 
           <div className='relative z-10'>
-            <div className='mb-6 h-[2px] w-[40px] bg-[#1b1b1b]' />
+            <div className='mb-6 h-[2px] w-[40px] ml-1.5 bg-[#1b1b1b]' />
             <div ref={textBoxRef} className='relative max-w-7xl'>
               {/* Base white text (always visible) */}
               <p className='text-[clamp(34px,4.2vw,60px)] leading-[1.02] tracking-[-0.03em] text-white'>

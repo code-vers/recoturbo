@@ -268,7 +268,7 @@ export default function EditorialPinnedGallery({
   }, [safeSlides]);
 
   return (
-    <div>
+    <div className='md:px-4 lg:px-0 bg-[#ebe7e4]'>
       <section
         ref={sectionRef}
         className={[
@@ -284,7 +284,7 @@ export default function EditorialPinnedGallery({
           <div className='mx-auto flex h-full w-full max-w-[1640px] flex-col pt-4 pb-4 sm:pt-5 sm:pb-5 lg:pt-10 lg:pb-6'>
             <div className='grid grid-cols-12 gap-y-5 lg:gap-y-0 lg:gap-x-[42px] h-[200px] md:h-auto'>
               <div className='col-span-12 lg:col-span-6'>
-                <div className='mb-4 h-[2px] w-[40px] bg-[#2b2b2b]/75 lg:mb-5' />
+                <div className='mb-4 h-[2px] w-[40px] ml-0.5 md:ml-1 bg-[#2b2b2b]/75 lg:mb-5' />
                 <div
                   ref={titleWrapRef}
                   className='max-w-[780px] molde-expanded text-[24px] md:text-[50px] leading-[30px] md:leading-[50px] font-normal text-black'>
@@ -299,7 +299,7 @@ export default function EditorialPinnedGallery({
                   <span className='block'>{safeSlides[0].description}</span>
                 </div>
 
-                <div className='mt-8 flex w-[120px] flex-col gap-[7px] lg:mt-11'>
+                <div className='mt-12 flex w-[120px] flex-col gap-[7px]'>
                   <div
                     ref={countWrapRef}
                     className='text-[clamp(15px,0.96vw,22px)] leading-none tracking-[-0.03em] text-black'>
@@ -327,7 +327,7 @@ export default function EditorialPinnedGallery({
                     ref={(el) => {
                       imageRefs.current[index] = el;
                     }}
-                    className='absolute px-2 md:px-4 inset-0'>
+                    className='absolute md:px-4 inset-0'>
                     <img
                       src={slide.image}
                       alt={slide.title}

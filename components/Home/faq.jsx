@@ -360,7 +360,10 @@ export default function LuxuryFaqSection({
         ref={shellRef}
         className='relative mx-auto py-[50px]  max-w-[1512px] px-[42px]'>
         <div className='pt-[50px]'>
-          <div ref={lineRef} className='h-[2px] w-[30px] bg-[#0f1115]' />
+          <div
+            ref={lineRef}
+            className='h-[2px] ml-[5px] w-[30px] bg-[#0f1115]'
+          />
           <h2
             ref={titleRef}
             className='mt-[10px] molde-expanded text-[54px] font-normal leading-[0.9] tracking-[-0.055em] text-[#0f1115] sm:text-[62px] xl:text-[66px]'>
