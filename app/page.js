@@ -1,6 +1,7 @@
 import About from "@/components/Home/About";
 import EditorialPinnedGallery from "@/components/Home/EditorialPinnedGallery";
 import LuxuryFaqSection from "@/components/Home/faq";
+import FeaturedExperienceSection2 from "@/components/Home/FeaturedExperienceSection2";
 import HeroBanner from "@/components/Home/HeroBanner";
 import LocationArrivalMapsSection from "@/components/Home/LocationArrivalMapsSection";
 import LuxuryResortShowcase from "@/components/Home/LuxuryResortShowcase";
@@ -14,6 +15,7 @@ export default function Page() {
       <About />
       <EditorialPinnedGallery />
       <LuxuryResortShowcase />
+      <FeaturedExperienceSection2 />
       <LuxuryFaqSection />
       <LocationArrivalMapsSection
         content={{
