@@ -7,22 +7,35 @@ import { useLayoutEffect, useMemo, useRef } from "react";
 
 const DEFAULT_SLIDES = [
   {
-    title: "ETHEREAL DESIGN",
-    description:
-      "Designed to transform an authentic immersion into nature, air bubbles reflecting the sky and the sea",
-    image: "/ab.jpg",
+    title: "SHARED MOMENTS",
+    description: "Spaces designed for connection, comfort, and togetherness.",
+    image: "/editorial-gallery/i1.jpg",
   },
   {
-    title: "PURE CONNECTION WITH NATURE",
-    description:
-      "Shebara offers a unique blend of lush ecosystems and breathtaking coral reefs, where barefoot luxury meets conservation",
-    image: "/bc.jpg",
+    title: "AIRBNB RESORT",
+    description: "Design-led spaces that drive premium returns.",
+    image: "/editorial-gallery/i2.jpg",
   },
   {
-    title: "SCULPTED SERENITY",
+    title: "OUTDOOR EXPERINCE",
+    description: "Reconnect with nature through curated activities.",
+    image: "/editorial-gallery/i3.jpg",
+  },
+  {
+    title: "SEAFRONT LIVING",
+    description: "Exclusive locations where the view defines the experience.",
+    image: "/editorial-gallery/i4.jpg",
+  },
+  {
+    title: "FIRST GUESTS",
     description:
-      "Curved forms, immersive views, and tactile materials come together to shape a timeless atmosphere of elevated hospitality.",
-    image: "/cd.jpg",
+      "Create a destination where every arrival feels Ike an escape.",
+    image: "/editorial-gallery/i5.jpg",
+  },
+  {
+    title: "UNDER THE STARS",
+    description: "Immerse guests in nature with uninterrupted night views.",
+    image: "/editorial-gallery/i6.jpg",
   },
 ];
 
@@ -272,7 +285,7 @@ export default function EditorialPinnedGallery({
       <section
         ref={sectionRef}
         className={[
-          "relative h-screen w-full py-10 pt-40 md:pt-0 overflow-hidden bg-[#ebe7e4] p-4 md:p-0",
+          "relative h-screen w-full pt-40 md:pt-0 overflow-hidden bg-[#ebe7e4] p-4 md:p-0",
           className,
         ].join(" ")}
         style={{
@@ -287,7 +300,7 @@ export default function EditorialPinnedGallery({
                 <div className='mb-4 h-[2px] w-[40px] ml-0.5 md:ml-1 bg-[#2b2b2b]/75 lg:mb-5' />
                 <div
                   ref={titleWrapRef}
-                  className='max-w-[780px] molde-expanded text-[24px] md:text-[50px] leading-[30px] md:leading-[50px] font-normal text-black'>
+                  className='max-w-[780px] molde-expanded text-[24px] md:text-[30px] leading-[30px] md:leading-[50px] font-normal text-black'>
                   <span className='block'>{safeSlides[0].title}</span>
                 </div>
               </div>

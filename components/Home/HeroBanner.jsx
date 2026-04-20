@@ -192,6 +192,7 @@ export default function HeroBanner({
               <br />
               SOMEWHERE
             </h1>
+            <p className='mt-2.5'>rooms for living and rental</p>
           </div>
         </div>
       </div>

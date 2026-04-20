@@ -177,7 +177,7 @@ export default function LocationArrivalMapsSection({
 
               <h2
                 ref={titleRef}
-                className='pt-[36px] molde-expanded text-[24px] max-md:text-[22px] font-normal uppercase leading-[30px] md:leading-[50px] text-[#111111] md:text-[50px]'>
+                className='pt-[36px] molde-expanded text-[30px] max-md:text-[22px] font-normal uppercase leading-[30px] md:leading-[50px] text-[#111111] md:text-[50px]'>
                 {safeContent.title}
               </h2>
             </div>
@@ -195,7 +195,7 @@ export default function LocationArrivalMapsSection({
         {/* Bottom maps */}
         <div
           ref={cardsWrapRef}
-          className='grid grid-cols-1 gap-0 pt-[88px] py-10 md:grid-cols-2'>
+          className='grid grid-cols-1 gap-0 pt-[88px] py-10 md:grid-cols-2 hidden'>
           <MapPanel
             refProp={leftCardRef}
             labelRef={leftLabelRef}

@@ -8,42 +8,42 @@ import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
 
 const DEFAULT_SLIDES = [
   {
-    eyebrow: "INNOVATIVE HOMES ANYWHERE IN THE WORLD",
-    title: "01 Quick on site assembly",
+    eyebrow: "01 Quick on site assembly",
+    title: "",
     description:
       "Our houses are delivered as ready-to-assemble kits and built directly on-site in just 7–10 days — with no need for a foundation or heavy construction work. Perfect for quickly and efficiently launching glamping sites, rentals, or for private use.",
-    cta: "Explore More Experiences",
+    cta: "",
     image: "/showcase/rec1.webp",
   },
   {
-    eyebrow: "INNOVATIVE HOMES ANYWHERE IN THE WORLD",
-    title: "02 Aesthetics and durability",
+    eyebrow: "02 Aesthetics and durability",
+    title: "",
     description:
       "Inspired by modern design, our structures combine visual elegance with strong and reliable assembly. A timeless style built to last — both beautiful and dependable.",
-    cta: "Explore More Experiences",
+    cta: "",
     image: "/showcase/rec2.webp",
   },
   {
-    eyebrow: "INNOVATIVE HOMES ANYWHERE IN THE WORLD",
-    title: "03 Easy installation on any site",
+    eyebrow: "03 Easy installation on any site",
+    title: "",
     description:
       "Install on forest plots, mountain slopes, or by the sea — with no need for utility connections and minimal environmental impact. True autonomy and placement flexibility.",
-    cta: "Explore More Experiences",
+    cta: "",
     image: "/showcase/rec3.webp",
   },
   {
-    eyebrow: "INNOVATIVE HOMES ANYWHERE IN THE WORLD",
-    title: "04 Smart investment",
+    eyebrow: "04 Smart investment",
+    title: "",
     description:
       "High profitability — ideal for Airbnb or tourist rentals. Fast return on investment and steady income.",
-    cta: "Explore More Experiences",
+    cta: "",
     image: "/showcase/rec4.webp",
   },
   {
-    eyebrow: "INNOVATIVE HOMES ANYWHERE IN THE WORLD",
-    title: "Want to know more details?",
+    eyebrow: "Want to know more details?",
+    title: "",
     description: "Learn more about our fast and simple installation process.",
-    cta: "Explore More Experiences",
+    cta: "",
     image: "/showcase/rec5.webp",
   },
 ];
@@ -317,7 +317,7 @@ export default function FeaturedExperienceSection({
           <div className='overflow-hidden'>
             <div
               ref={eyebrowRef}
-              className='text-[14px] molde-expanded lg:text-[30px] uppercase text-black lg:text-white/80'>
+              className='text-[14px] molde-expanded md:text-[25px] lg:text-[30px] uppercase text-black lg:text-white/80'>
               {safeSlides[0].eyebrow}
             </div>
             <div className='mt-2 h-[2px] w-8 bg-black lg:bg-white' />

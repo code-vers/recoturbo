@@ -8,29 +8,29 @@ import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
 
 const DEFAULT_SLIDES = [
   {
-    eyebrow: "From Vision → to Profit",
-    title: "Choose your dream location",
+    eyebrow: "Choose your dream location",
+    title: "",
     description:
       "Do you have a beautiful piece of land?We’ll help turn it into a place your guests will fall in love with.",
-    cta: "Explore More Experiences",
+    cta: "",
     image:
       "https://optim.tildacdn.one/tild6362-6335-4237-a134-393930356366/-/resize/560x/-/format/webp/_22.jpg.webp",
   },
   {
-    eyebrow: "From Vision → to Profit",
-    title: "We bring the houses",
+    eyebrow: "We bring the houses",
+    title: "",
     description:
       "We deliver fully equipped house kits — ready for installation and rental. Each design is created for comfort, harmony with nature, and memorable Instagram moments.",
-    cta: "Explore More Experiences",
+    cta: "",
     image:
       "https://optim.tildacdn.one/tild3965-6339-4766-b432-636432313139/-/resize/560x/-/format/webp/Free-HD-Truck-Wallpa.jpg.webp",
   },
   {
-    eyebrow: "From Vision → to Profit",
-    title: "Launch your retreat center",
+    eyebrow: "Launch your retreat center",
+    title: "",
     description:
       "We’ll support you every step of the way — from assembly to launch. In just a few weeks, you’ll turn your land into a fully operating rental business, ready to welcome your first guests.",
-    cta: "Explore More Experiences",
+    cta: "",
     image:
       "https://optim.tildacdn.one/tild6262-3066-4264-b933-303535653732/-/resize/560x/-/format/webp/IMG_3255.JPG.webp",
   },
@@ -305,7 +305,7 @@ export default function FeaturedExperienceSection2({
           <div className='overflow-hidden'>
             <div
               ref={eyebrowRef}
-              className='text-[14px] molde-expanded lg:text-[30px] uppercase text-black lg:text-white/80'>
+              className='text-[14px] molde-expanded md:text-[25px] lg:text-[30px] uppercase text-black lg:text-white/80'>
               {safeSlides[0].eyebrow}
             </div>
             <div className='mt-2 h-[2px] w-8 bg-black lg:bg-white' />
