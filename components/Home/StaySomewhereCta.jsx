@@ -18,7 +18,7 @@ const StaySomewhereCta = () => {
 
         <button
           type='button'
-          className='mt-12 inline-flex h-[75px] min-w-[344px] items-center justify-center bg-black px-8 text-[24px] font-light tracking-[-0.03em] text-white transition-transform duration-200 hover:scale-[1.02]'>
+          className='mt-12 inline-flex h-[50px] md:h-[75px] min-w-[344px] items-center justify-center bg-black px-8 text-[24px] font-light tracking-[-0.03em] text-white transition-transform duration-200 hover:scale-[1.02]'>
           Book a Consultation
         </button>
       </div>

@@ -12,9 +12,15 @@ const VillaDetails = () => {
   const [showFeatures, setShowFeatures] = useState(false);
 
   const images = [
-    "/image_0609a9.jpg",
-    "/image_060948.jpg",
-    "/image_060985.jpg",
+    "/roomone-01.jpg",
+    "/roomone-02.jpg",
+    "/roomone-03.jpg",
+    "/roomone-04.jpg",
+    "/roomone-05.jpg",
+    "/roomone-07.jpg",
+    "/roomone-08.jpg",
+    "/roomone-09.jpg",
+    "/grok-image-89d36f3d-449b-4495-91bf-ed61e385a719-2.png",
   ];
 
   const features = {
@@ -27,7 +33,7 @@ const VillaDetails = () => {
 
   return (
     <section
-      className='bg-[#ebe7e4] min-h-screen px-4 md:px-8 lg:px-0'
+      className='bg-[#ebe7e4] lg:min-h-screen px-4 md:px-8 lg:px-0'
       style={{
         isolation: "isolate",
         backgroundImage:
@@ -92,7 +98,7 @@ const VillaDetails = () => {
         </div>
 
         {/* Action Buttons */}
-        <div className='flex flex-col md:flex-row gap-2 w-full border-b border-gray-200 pb-6 lg:pb-0'>
+        <div className='flex flex-col md:flex-row gap-2 w-full border-b border-gray-200 mt-5 pb-6 lg:pb-0'>
           <button
             onClick={() => setShowFeatures(!showFeatures)}
             className={`flex-1 py-4 lg:py-5 hover:bg-black hover:text-white cursor-pointer uppercase tracking-[0.2em] text-xs lg:text-sm font-medium border border-black transition-colors ${showFeatures ? "bg-black text-white" : "bg-transparent text-black"}`}>

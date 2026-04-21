@@ -3,6 +3,7 @@ import EditorialPinnedGallery from "@/components/Home/EditorialPinnedGallery";
 import LuxuryFaqSection from "@/components/Home/faq";
 import FeaturedExperienceSection2 from "@/components/Home/FeaturedExperienceSection2";
 import HeroBanner from "@/components/Home/HeroBanner";
+import HeroSection2 from "@/components/Home/HeroSection2";
 import LocationArrivalMapsSection from "@/components/Home/LocationArrivalMapsSection";
 import LuxuryResortShowcase from "@/components/Home/LuxuryResortShowcase";
 import OrderSteps from "@/components/Home/OrderSteps";
@@ -21,6 +22,7 @@ export default function Page() {
       <VillaDetails />
       <DynamicTitle text={"INNOVATIVE HOMES ANYWHERE IN THE WORLD"} />
       <LuxuryResortShowcase />
+      <HeroSection2 />
       <DynamicTitle2 text={"From Vision → to Profit"} />
       <FeaturedExperienceSection2 />
       <LuxuryFaqSection />

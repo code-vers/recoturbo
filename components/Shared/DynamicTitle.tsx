@@ -1,7 +1,7 @@
 const DynamicTitle = ({ text }) => {
   return (
     <div
-      className='relative w-full h-auto md:pb-22  lg:pt-20 lg:pb-40 bg-[#ebe7e4] flex justify-center items-center'
+      className='relative w-full h-auto pb-14 md:pb-22  lg:pt-20 lg:pb-40 bg-[#ebe7e4] flex justify-center items-center'
       style={{
         isolation: "isolate",
         backgroundImage:
