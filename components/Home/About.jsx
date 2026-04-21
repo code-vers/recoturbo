@@ -237,23 +237,16 @@ export default function About({
     <section
       ref={sectionRef}
       className={[
-        "relative h-screen w-full overflow-hidden bg-[#e9e4e1]",
+        "relative h-screen w-full overflow-hidden bg-[#ebe7e4]",
         className,
-      ].join(" ")}>
-      <div className='absolute top-0 left-0 right-0 h-2 bg-black opacity-50' />
-      <div className='absolute inset-0 bg-[linear-gradient(180deg,#e3e3e3_0%,#d6d6d6_45%,#d9d9d9_100%)]' />
-      <div className='absolute inset-0 opacity-100'>
-        <div className='absolute left-[-10%] top-[4%] h-[52%] w-[75%] rotate-[24deg] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.75)_0%,rgba(255,255,255,0.40)_22%,rgba(255,255,255,0.15)_44%,rgba(255,255,255,0)_70%)] blur-[22px]' />
-        <div className='absolute right-[-8%] top-[2%] h-[54%] w-[75%] -rotate-[23deg] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.72)_0%,rgba(255,255,255,0.36)_26%,rgba(255,255,255,0.14)_48%,rgba(255,255,255,0)_74%)] blur-[24px]' />
-        <div className='absolute left-[6%] bottom-[-6%] h-[58%] w-[78%] -rotate-[22deg] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.65)_0%,rgba(255,255,255,0.30)_25%,rgba(255,255,255,0.12)_46%,rgba(255,255,255,0)_72%)] blur-[26px]' />
-        <div className='absolute right-[2%] bottom-[0%] h-[54%] w-[72%] rotate-[22deg] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.60)_0%,rgba(255,255,255,0.28)_28%,rgba(255,255,255,0.10)_48%,rgba(255,255,255,0)_74%)] blur-[24px]' />
-      </div>
-      <div className='absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.18),transparent_35%),radial-gradient(circle_at_bottom,rgba(0,0,0,0.04),transparent_40%)]' />
-
+      ].join(" ")}
+      style={{
+        isolation: "isolate",
+        backgroundImage:
+          "radial-gradient(circle at 18% 22%, rgba(255,232,220,0.42), transparent 18%), radial-gradient(circle at 66% 15%, rgba(194,220,255,0.24), transparent 16%), radial-gradient(circle at 84% 86%, rgba(255,221,206,0.16), transparent 14%)",
+      }}>
       <div className='flex h-full w-full items-center'>
         <div className='mx-auto w-full max-w-[1280px] px-6 sm:px-8 md:px-10'>
-          <div className='mb-6 h-[2px] w-10 bg-[#1b1b1b]' />
-
           <div className='relative z-10'>
             <div className='mb-6 h-[2px] w-[40px] ml-1.5 bg-[#1b1b1b]' />
             <div ref={textBoxRef} className='relative max-w-7xl'>

@@ -3,9 +3,14 @@ import EditorialPinnedGallery from "@/components/Home/EditorialPinnedGallery";
 import LuxuryFaqSection from "@/components/Home/faq";
 import FeaturedExperienceSection2 from "@/components/Home/FeaturedExperienceSection2";
 import HeroBanner from "@/components/Home/HeroBanner";
+import HeroSection2 from "@/components/Home/HeroSection2";
 import LocationArrivalMapsSection from "@/components/Home/LocationArrivalMapsSection";
 import LuxuryResortShowcase from "@/components/Home/LuxuryResortShowcase";
+import OrderSteps from "@/components/Home/OrderSteps";
 import StaySomewhereCta from "@/components/Home/StaySomewhereCta";
+import VillaDetails from "@/components/Home/VillaDetails";
+import DynamicTitle from "@/components/Shared/DynamicTitle";
+import DynamicTitle2 from "@/components/Shared/DynamicTitle2";
 
 export default function Page() {
   return (
@@ -14,7 +19,11 @@ export default function Page() {
 
       <About />
       <EditorialPinnedGallery />
+      <VillaDetails />
+      <DynamicTitle text={"INNOVATIVE HOMES ANYWHERE IN THE WORLD"} />
       <LuxuryResortShowcase />
+      <HeroSection2 />
+      <DynamicTitle2 text={"From Vision → to Profit"} />
       <FeaturedExperienceSection2 />
       <LuxuryFaqSection />
       <LocationArrivalMapsSection
@@ -23,6 +32,7 @@ export default function Page() {
           rightMapImage: "/Baharain.png",
         }}
       />
+      <OrderSteps />
       <StaySomewhereCta />
     </>
   );
