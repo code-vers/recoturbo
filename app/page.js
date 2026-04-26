@@ -20,10 +20,10 @@ export default function Page() {
       <About />
       <EditorialPinnedGallery />
       <VillaDetails />
-      <DynamicTitle text={"INNOVATIVE HOMES ANYWHERE IN THE WORLD"} />
+      <DynamicTitle text={"LUXURY ROOMS ANYWHERE IN THE WORLD"} />
       <LuxuryResortShowcase />
       <HeroSection2 />
-      <DynamicTitle2 text={"From Vision → to Profit"} />
+      <DynamicTitle2 />
       <FeaturedExperienceSection2 />
       <LuxuryFaqSection />
       <LocationArrivalMapsSection
