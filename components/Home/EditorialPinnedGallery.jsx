@@ -17,7 +17,7 @@ const DEFAULT_SLIDES = [
     image: "/editorial-gallery/i2.jpg",
   },
   {
-    title: "OUTDOOR EXPERINCE",
+    title: "OUTDOOR EXPERIENCE",
     description: "Reconnect with nature through curated activities.",
     image: "/editorial-gallery/i3.jpg",
   },
@@ -340,7 +340,7 @@ export default function EditorialPinnedGallery({
                     ref={(el) => {
                       imageRefs.current[index] = el;
                     }}
-                    className='absolute md:px-4 inset-0'>
+                    className='absolute inset-0'>
                     <img
                       src={slide.image}
                       alt={slide.title}

@@ -24,11 +24,16 @@ const VillaDetails = () => {
   ];
 
   const features = {
-    "Living Area": "Dining Table, Lounge, Bar Unit, Pantry",
-    Bedroom:
-      "King Bed, Wardrobe, Dressing Table, Double Shower, Double Vanity, Enclosed Toilet & Bidet, Bathtub",
-    "Outdoor Features":
-      "Infinity Pool, Terrace, Double Daybed, Sunken Lounge, Outdoor Shower",
+    Concept:
+      "A refined, design-led retreat suite created for seamless placement in natural settings, hospitality environments, or private land.",
+    Versatility:
+      "The R1 Terra Suite is perfectly suited for short-stay rentals, boutique accommodation, or personal use, offering a flexible space that comfortably accommodates a couple or small family. Thoughtfully designed to be compact, energy-efficient, and visually striking, it delivers both comfort and versatility—equally suited as a luxury guest suite, workspace, or reception unit. The R1 Terra Suite is designed around a flexible, modular interior system that maximises both space and functionality. Each unit seamlessly integrates a bedroom area, mini-kitchen, bathroom, wardrobe, and lounge seating, creating a complete, self-contained living environment.",
+    Interior:
+      "Designed around a flexible, modular interior system that integrates a bedroom area, mini-kitchen, bathroom, wardrobe, and lounge seating.",
+    Adaptability:
+      "Fully adaptable system allowing for additional configurations such as upper-level extensions or secondary bedroom modules, enabling the space to evolve in line with different lifestyle or hospitality requirements.",
+    Philosophy:
+      "Every detail is considered, resulting in a space that is not just visually striking, but deeply restorative—a private sanctuary designed for elevated living at the edge of nature.",
   };
 
   return (
@@ -47,14 +52,10 @@ const VillaDetails = () => {
           </h1>
           <div className='flex flex-col lg:flex-row lg:gap-6 text-[13px] lg:text-[14px] font-medium uppercase leading-[25px] text-gray-600'>
             <span>
-              Size: <b className='text-black'>188 sqm (I: 103 sqm E: 85 sqm)</b>
+              Size: <b className='text-black'>6 x 5m (30 sqm) </b>
             </span>
             <span>
-              Beds: <b className='text-black'>King Size bed</b>
-            </span>
-            <span>
-              Maximum Occupancy:{" "}
-              <b className='text-black'>2 Adults, 1 Child, and 1 Infant</b>
+              From : <b className='text-black'>£70,500 / 30m²</b>
             </span>
           </div>
         </div>
@@ -105,7 +106,7 @@ const VillaDetails = () => {
             {showFeatures ? "Close" : "Explore"}
           </button>
           <button className='flex-1 cursor-pointer py-4 lg:py-5 hover:bg-black text-black hover:text-white uppercase tracking-[0.2em] text-xs lg:text-sm font-medium border border-black transition-colors'>
-            Check Availability
+            Book Consultation
           </button>
         </div>
 
@@ -115,7 +116,7 @@ const VillaDetails = () => {
             {/* Header with Underline */}
             <div className='relative mb-8 lg:mb-12 border-b border-gray-300'>
               <h2 className='text-[24px] lg:text-[32px] font-light tracking-wide pb-4'>
-                Villa Features
+                Room Features
               </h2>
               <div className='absolute bottom-0 left-0 w-[80px] lg:w-[120px] h-[1.5px] bg-black'></div>
             </div>
@@ -128,11 +129,14 @@ const VillaDetails = () => {
                   <span className='font-bold text-[13px] lg:text-[14px] uppercase tracking-[0.1em] mb-2 lg:mb-0'>
                     {key}:
                   </span>
-                  <span className='text-[14px] text-[#4a4a4a] tracking-wide leading-relaxed lg:text-right'>
+                  <span className='text-[14px] text-[#4a4a4a] tracking-wide leading-relaxed'>
                     {value}
                   </span>
                 </div>
               ))}
+              <div className='flex justify-center pt-10'>
+                <img src='/r1.jpg' className='h-100' alt='' />
+              </div>
             </div>
           </div>
         )}

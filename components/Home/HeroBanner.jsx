@@ -116,7 +116,7 @@ export default function HeroBanner({
               src={compact ? "onlyRoom.svg" : "roomLogo2.svg"}
               alt='Your brand image'
               className={`object-contain transition-opacity duration-500 ease-in-out ${
-                compact ? "h-6" : "h-12" // Resize logo when scrolling
+                compact ? "h-6" : "h-18" // Resize logo when scrolling
               }`}
             />
           </div>
@@ -208,6 +208,9 @@ export default function HeroBanner({
                 <br />
                 SOMEWHERE
               </h1>
+              <div className='mb-4 h-[2px] w-[40px] ml-0.5 mt-2 md:ml-1 bg-white lg:mb-5' />
+
+              <p className='mt-2.5'>rooms for living and rental</p>
 
               {/* Controls */}
               <div className='mt-6 flex gap-3 md:mt-10 md:gap-4'>

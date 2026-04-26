@@ -305,7 +305,7 @@ export default function FeaturedExperienceSection2({
           <div className='overflow-hidden'>
             <div
               ref={eyebrowRef}
-              className='text-[14px] molde-expanded md:text-[25px] lg:text-[30px] uppercase text-black lg:text-white/80'>
+              className='text-[28px] md:text-[40px] molde-expanded lg:text-[50px] uppercase text-black lg:text-white/80'>
               {safeSlides[0].eyebrow}
             </div>
             <div className='mt-2 h-[2px] w-8 bg-black lg:bg-white' />
