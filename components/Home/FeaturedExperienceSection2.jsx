@@ -13,8 +13,7 @@ const DEFAULT_SLIDES = [
     description:
       "Do you have a beautiful piece of land?We’ll help turn it into a place your guests will fall in love with.",
     cta: "",
-    image:
-      "https://optim.tildacdn.one/tild6362-6335-4237-a134-393930356366/-/resize/560x/-/format/webp/_22.jpg.webp",
+    image: "/rr1.jpg",
   },
   {
     eyebrow: "We bring the houses",
@@ -30,8 +29,7 @@ const DEFAULT_SLIDES = [
     description:
       "We’ll support you every step of the way — from assembly to launch. In just a few weeks, you’ll turn your land into a fully operating rental business, ready to welcome your first guests.",
     cta: "",
-    image:
-      "https://optim.tildacdn.one/tild6262-3066-4264-b933-303535653732/-/resize/560x/-/format/webp/IMG_3255.JPG.webp",
+    image: "/rr3.jpg",
   },
 ];
 
