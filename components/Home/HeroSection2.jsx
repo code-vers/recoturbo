@@ -12,7 +12,7 @@ const HeroSection2 = () => {
 
       {/* Content Overlay */}
       <div
-        className='relative z-10 h-full max-w-[1640px] mx-auto flex flex-col px-6 md:px-12 py-12 
+        className='relative z-10 h-full max-w-[1640px] mx-auto flex flex-col px-6 md:px-0  py-12 
                       justify-center lg:justify-between'>
         {/* Top Heading */}
         <div className='lg:mt-20 max-w-4xl'>
