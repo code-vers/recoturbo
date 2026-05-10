@@ -16,7 +16,7 @@ const DEFAULT_SLIDES = [
     image: "/rr1.jpg",
   },
   {
-    eyebrow: "We bring the houses",
+    eyebrow: "We bring your room",
     title: "",
     description:
       "We deliver fully equipped house kits — ready for installation and rental. Each design is created for comfort, harmony with nature, and memorable Instagram moments.",

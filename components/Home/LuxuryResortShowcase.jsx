@@ -11,7 +11,7 @@ const DEFAULT_SLIDES = [
     eyebrow: "01 Quick on site assembly",
     title: "",
     description:
-      "Our houses are delivered as ready-to-assemble kits and built directly on-site in just 7–10 days — with no need for a foundation or heavy construction work. Perfect for quickly and efficiently launching glamping sites, rentals, or for private use.",
+      "Our rooms are delivered as ready-to-assemble kits and built directly on-site in just 7–10 days — with no need for a foundation or heavy construction work. Perfect for quickly and efficiently launching glamping sites, rentals, or for private use.",
     cta: "",
     image: "/roomContainer.jpg",
   },
@@ -35,9 +35,9 @@ const DEFAULT_SLIDES = [
     eyebrow: "04 Smart investment",
     title: "",
     description:
-      "High profitability — ideal for Airbnb or tourist rentals. Fast return on investment and steady income.",
+      "High profitability — ideal for Airbnb or tourist rentals. /n Fast return on investment and steady income.",
     cta: "",
-    image: "/smart.jpg  1q",
+    image: "/smart.jpg",
   },
   {
     eyebrow: "Want to know more details?",
