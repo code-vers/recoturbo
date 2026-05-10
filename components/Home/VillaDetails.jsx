@@ -134,9 +134,9 @@ const VillaDetails = () => {
                   </span>
                 </div>
               ))}
-              <div className='flex pt-10'>
+              {/* <div className='flex pt-10'>
                 <img src='/r1.jpg' className=' h-full md:h-300 w-full' alt='' />
-              </div>
+              </div> */}
             </div>
           </div>
         )}
