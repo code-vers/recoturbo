@@ -37,7 +37,7 @@ const DEFAULT_SLIDES = [
     description:
       "High profitability — ideal for Airbnb or tourist rentals. Fast return on investment and steady income.",
     cta: "",
-    image: "/smart.jpg  1q",
+    image: "/smart.jpg",
   },
   {
     eyebrow: "Want to know more details?",
