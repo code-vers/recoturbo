@@ -6,13 +6,13 @@ const StaySomewhereCta = () => {
         {/* <h1 className='text-[42px] font-semibold leading-none tracking-[-0.06em] text-black sm:text-[72px] md:text-[86px]'>
           room residences
         </h1> */}
-        <img src='/roomLogo.svg' className='text-black py-10' alt='' />
+        <img src='/roomLogo.svg' className='text-black pt-10 pb-4' alt='' />
 
-        <p className='mt-1 text-[28px] molde-expanded uppercase md:leading-[70px] text-black sm:text-[48px]'>
+        <p className='text-[28px] molde-expanded uppercase md:leading-[70px] text-black sm:text-[48px]'>
           STAY SOMEWHERE
         </p>
 
-        <p className='mt-8 text-[18px] leading-[25px] font-normal text-black/85'>
+        <p className=' text-[18px] leading-[25px] font-normal text-black/85'>
           rooms for living and rental
         </p>
 

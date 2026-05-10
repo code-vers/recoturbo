@@ -13,7 +13,7 @@ const DEFAULT_SLIDES = [
     description:
       "Our houses are delivered as ready-to-assemble kits and built directly on-site in just 7–10 days — with no need for a foundation or heavy construction work. Perfect for quickly and efficiently launching glamping sites, rentals, or for private use.",
     cta: "",
-    image: "/showcase/rec1.webp",
+    image: "/roomContainer.jpg",
   },
   {
     eyebrow: "02 Aesthetics and durability",
@@ -21,7 +21,7 @@ const DEFAULT_SLIDES = [
     description:
       "Inspired by modern design, our structures combine visual elegance with strong and reliable assembly. A timeless style built to last — both beautiful and dependable.",
     cta: "",
-    image: "/showcase/rec2.webp",
+    image: "/asthetic.jpg",
   },
   {
     eyebrow: "03 Easy installation on any site",
@@ -29,7 +29,7 @@ const DEFAULT_SLIDES = [
     description:
       "Install on forest plots, mountain slopes, or by the sea — with no need for utility connections and minimal environmental impact. True autonomy and placement flexibility.",
     cta: "",
-    image: "/showcase/rec3.webp",
+    image: "/easy.jpg",
   },
   {
     eyebrow: "04 Smart investment",
@@ -37,14 +37,14 @@ const DEFAULT_SLIDES = [
     description:
       "High profitability — ideal for Airbnb or tourist rentals. Fast return on investment and steady income.",
     cta: "",
-    image: "/showcase/rec4.webp",
+    image: "/smart.jpg  1q",
   },
   {
     eyebrow: "Want to know more details?",
     title: "",
     description: "Learn more about our fast and simple installation process.",
     cta: "",
-    image: "/showcase/rec5.webp",
+    image: "/wantToKnow.jpg",
   },
 ];
 
@@ -317,7 +317,7 @@ export default function FeaturedExperienceSection({
           <div className='overflow-hidden'>
             <div
               ref={eyebrowRef}
-              className='text-[28px] md:text-[40px] molde-expanded lg:text-[50px] uppercase text-black lg:text-white/80'>
+              className='text-[28px] md:text-[40px] lg:text-[50px] uppercase text-black lg:text-white/80'>
               {safeSlides[0].eyebrow}
             </div>
             <div className='mt-2 h-[2px] w-8 bg-black lg:bg-white' />

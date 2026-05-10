@@ -13,9 +13,14 @@ const DynamicTitle = ({ text }) => {
         <div className='flex justify-center mb-5'>
           <div className='relative h-[2px] w-[40px] overflow-hidden bg-black' />
         </div>
-        <h2 className='md:text-[35px] lg:text-[35px] lg:text-[70px] lg:leading-[70px] flex text-black'>
-          FROM VISION <IoIosArrowForward className='h-[75px] mx-2' /> TO PROFIT
-        </h2>
+
+        <div className='flex items-center md:text-[35px] lg:text-[35px] flex lg:text-[70px] lg:leading-[70px] text-black'>
+          <p>FROM VISION</p>
+          <div>
+            <IoIosArrowForward className='mx-2' />
+          </div>
+          <p>TO PROFIT</p>
+        </div>
       </div>
     </div>
   );

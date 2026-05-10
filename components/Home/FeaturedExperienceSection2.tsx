@@ -22,8 +22,7 @@ const DEFAULT_SLIDES = [
     description:
       "We deliver fully equipped house kits — ready for installation and rental. Each design is created for comfort, harmony with nature, and memorable Instagram moments.",
     cta: "",
-    image:
-      "https://optim.tildacdn.one/tild3965-6339-4766-b432-636432313139/-/resize/560x/-/format/webp/Free-HD-Truck-Wallpa.jpg.webp",
+    image: "/truck.jpg",
   },
   {
     eyebrow: "Launch your retreat center",
@@ -305,7 +304,7 @@ export default function FeaturedExperienceSection2({
           <div className='overflow-hidden'>
             <div
               ref={eyebrowRef}
-              className='text-[28px] md:text-[40px] molde-expanded lg:text-[50px] uppercase text-black lg:text-white/80'>
+              className='text-[28px] md:text-[40px] lg:text-[50px] uppercase text-black lg:text-white/80'>
               {safeSlides[0].eyebrow}
             </div>
             <div className='mt-2 h-[2px] w-8 bg-black lg:bg-white' />
