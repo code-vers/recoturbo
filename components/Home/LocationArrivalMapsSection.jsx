@@ -1,32 +1,32 @@
 /* eslint-disable @next/next/no-img-element */
-"use client";
+'use client';
 
-import gsap from "gsap";
-import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
+import gsap from 'gsap';
+import { useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 
 const DEFAULT_CONTENT = {
-  eyebrow: "",
-  title: "OUR LOCATION",
-  description: "",
-  leftLabel: "UK MAP",
-  rightLabel: "BAHRAIN MAP",
-  leftMapImage: "/UK.png",
-  rightMapImage: "/Baharain.png",
+  eyebrow: '',
+  title: 'OUR LOCATION',
+  description: '',
+  leftLabel: 'UK MAP',
+  rightLabel: 'BAHRAIN MAP',
+  leftMapImage: '/UK.png',
+  rightMapImage: '/Baharain.png',
 };
 
 // Locations to mark on the map
 const MAP_LOCATIONS = [
   {
-    name: "United Kingdom",
+    name: 'United Kingdom',
     lat: 51.5074,
     lng: -0.1278,
-    label: "UK",
+    label: 'UK',
   },
   {
-    name: "Bahrain",
+    name: 'Bahrain',
     lat: 26.2235,
     lng: 50.5876,
-    label: "BH",
+    label: 'BH',
   },
 ];
 
@@ -38,14 +38,14 @@ function InteractiveMap() {
     if (mapInstanceRef.current) return;
 
     // Dynamically load Leaflet CSS
-    const linkEl = document.createElement("link");
-    linkEl.rel = "stylesheet";
-    linkEl.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+    const linkEl = document.createElement('link');
+    linkEl.rel = 'stylesheet';
+    linkEl.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
     document.head.appendChild(linkEl);
 
     // Dynamically load Leaflet JS
-    const script = document.createElement("script");
-    script.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
     script.onload = () => {
       const L = window.L;
       if (!mapRef.current || mapInstanceRef.current) return;
@@ -62,13 +62,10 @@ function InteractiveMap() {
       mapInstanceRef.current = map;
 
       // Custom dark/muted tile layer matching the section's warm palette
-      L.tileLayer(
-        "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
-        {
-          subdomains: "abcd",
-          maxZoom: 19,
-        },
-      ).addTo(map);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+        subdomains: 'abcd',
+        maxZoom: 19,
+      }).addTo(map);
 
       // Custom SVG pin icon factory
       const createPin = (label) => {
@@ -117,7 +114,7 @@ function InteractiveMap() {
         `;
         return L.divIcon({
           html: svgStr,
-          className: "",
+          className: '',
           iconSize: [svgSize, svgSize + 12],
           iconAnchor: [svgSize / 2, svgSize + 12],
           popupAnchor: [0, -(svgSize + 14)],
@@ -142,13 +139,13 @@ function InteractiveMap() {
           ">${name}</div>`,
           {
             closeButton: false,
-            className: "custom-map-popup",
+            className: 'custom-map-popup',
             offset: [0, -4],
           },
         );
 
-        marker.on("mouseover", () => marker.openPopup());
-        marker.on("mouseout", () => marker.closePopup());
+        marker.on('mouseover', () => marker.openPopup());
+        marker.on('mouseout', () => marker.closePopup());
       });
 
       // Draw a subtle dashed arc line between the two locations
@@ -168,11 +165,11 @@ function InteractiveMap() {
       }
 
       L.polyline(arcPoints, {
-        color: "#111111",
+        color: '#111111',
         weight: 1.5,
         opacity: 0.35,
-        dashArray: "6, 8",
-        lineCap: "round",
+        dashArray: '6, 8',
+        lineCap: 'round',
       }).addTo(map);
 
       // Fit map to show both markers with padding
@@ -195,23 +192,11 @@ function InteractiveMap() {
     };
   }, []);
 
-  return (
-    <div
-      ref={mapRef}
-      className='w-full h-full'
-      style={{ background: "#ddd5cc" }}
-    />
-  );
+  return <div ref={mapRef} className='w-full h-full' style={{ background: '#ddd5cc' }} />;
 }
 
-export default function LocationArrivalMapsSection({
-  content = DEFAULT_CONTENT,
-  className = "",
-}) {
-  const safeContent = useMemo(
-    () => ({ ...DEFAULT_CONTENT, ...content }),
-    [content],
-  );
+export default function LocationArrivalMapsSection({ content = DEFAULT_CONTENT, className = '' }) {
+  const safeContent = useMemo(() => ({ ...DEFAULT_CONTENT, ...content }), [content]);
 
   const sectionRef = useRef(null);
   const introLineRef = useRef(null);
@@ -228,13 +213,13 @@ export default function LocationArrivalMapsSection({
     const ctx = gsap.context(() => {
       gsap.set(introLineRef.current, {
         scaleX: 0,
-        transformOrigin: "left center",
+        transformOrigin: 'left center',
       });
 
       gsap.set([titleRef.current, descRef.current], {
         y: 26,
         opacity: 0,
-        filter: "blur(8px)",
+        filter: 'blur(8px)',
       });
 
       gsap.set([leftCardRef.current, rightCardRef.current], {
@@ -245,13 +230,13 @@ export default function LocationArrivalMapsSection({
       gsap.set([leftLabelRef.current, rightLabelRef.current], {
         y: 18,
         opacity: 0,
-        filter: "blur(6px)",
+        filter: 'blur(6px)',
       });
 
       gsap.set(mapBoxRef.current, { opacity: 0, y: 32 });
 
       const tl = gsap.timeline({
-        defaults: { ease: "power3.out" },
+        defaults: { ease: 'power3.out' },
       });
 
       tl.to(introLineRef.current, {
@@ -263,20 +248,20 @@ export default function LocationArrivalMapsSection({
           {
             y: 0,
             opacity: 1,
-            filter: "blur(0px)",
+            filter: 'blur(0px)',
             duration: 0.95,
           },
-          "-=0.3",
+          '-=0.3',
         )
         .to(
           descRef.current,
           {
             y: 0,
             opacity: 1,
-            filter: "blur(0px)",
+            filter: 'blur(0px)',
             duration: 0.9,
           },
-          "-=0.72",
+          '-=0.72',
         )
         .to(
           mapBoxRef.current,
@@ -285,7 +270,7 @@ export default function LocationArrivalMapsSection({
             y: 0,
             duration: 1.1,
           },
-          "-=0.5",
+          '-=0.5',
         )
         .to(
           [leftCardRef.current, rightCardRef.current],
@@ -295,36 +280,36 @@ export default function LocationArrivalMapsSection({
             duration: 1,
             stagger: 0.08,
           },
-          "-=0.52",
+          '-=0.52',
         )
         .to(
           [leftLabelRef.current, rightLabelRef.current],
           {
             y: 0,
             opacity: 1,
-            filter: "blur(0px)",
+            filter: 'blur(0px)',
             duration: 0.8,
             stagger: 0.06,
           },
-          "-=0.7",
+          '-=0.7',
         );
 
       [leftCardRef.current, rightCardRef.current].forEach((card) => {
         if (!card) return;
 
-        const image = card.querySelector("[data-map-image]");
-        const overlay = card.querySelector("[data-map-overlay]");
+        const image = card.querySelector('[data-map-image]');
+        const overlay = card.querySelector('[data-map-overlay]');
 
         const enter = () => {
           gsap.to(image, {
             scale: 1.035,
             duration: 1.2,
-            ease: "power3.out",
+            ease: 'power3.out',
           });
           gsap.to(overlay, {
             opacity: 0.18,
             duration: 0.5,
-            ease: "power2.out",
+            ease: 'power2.out',
           });
         };
 
@@ -332,17 +317,17 @@ export default function LocationArrivalMapsSection({
           gsap.to(image, {
             scale: 1,
             duration: 1.1,
-            ease: "power3.out",
+            ease: 'power3.out',
           });
           gsap.to(overlay, {
             opacity: 0.1,
             duration: 0.45,
-            ease: "power2.out",
+            ease: 'power2.out',
           });
         };
 
-        card.addEventListener("mouseenter", enter);
-        card.addEventListener("mouseleave", leave);
+        card.addEventListener('mouseenter', enter);
+        card.addEventListener('mouseleave', leave);
 
         card._enter = enter;
         card._leave = leave;
@@ -352,8 +337,8 @@ export default function LocationArrivalMapsSection({
     return () => {
       [leftCardRef.current, rightCardRef.current].forEach((card) => {
         if (!card?._enter || !card?._leave) return;
-        card.removeEventListener("mouseenter", card._enter);
-        card.removeEventListener("mouseleave", card._leave);
+        card.removeEventListener('mouseenter', card._enter);
+        card.removeEventListener('mouseleave', card._leave);
       });
       ctx.revert();
     };
@@ -388,10 +373,8 @@ export default function LocationArrivalMapsSection({
 
       <section
         ref={sectionRef}
-        className={[
-          "relative w-full px-4 overflow-hidden bg-[#e7d9d4]",
-          className,
-        ].join(" ")}>
+        className={['relative w-full px-4 overflow-hidden bg-[#e7d9d4]', className].join(' ')}
+      >
         <div className='mx-auto w-full max-w-[1880px]'>
           {/* Top content */}
           <div className='max-w-[1640px] mx-auto w-full'>
@@ -403,7 +386,8 @@ export default function LocationArrivalMapsSection({
                 />
                 <h2
                   ref={titleRef}
-                  className='pt-[36px] molde-expanded text-[30px] max-md:text-[22px] font-normal uppercase leading-[30px] md:leading-[50px] text-[#111111] md:text-[50px]'>
+                  className='pt-[36px] molde-expanded text-[30px] max-md:text-[22px] font-normal uppercase leading-[30px] md:leading-[50px] text-[#111111] md:text-[50px]'
+                >
                   {safeContent.title}
                 </h2>
               </div>
@@ -411,7 +395,8 @@ export default function LocationArrivalMapsSection({
               <div className='flex justify-center items-center'>
                 <p
                   ref={descRef}
-                  className='pt-[0px] text-[18px] font-normal leading-[25px] text-[#252525]'>
+                  className='pt-[0px] text-[18px] font-normal leading-[25px] text-[#252525]'
+                >
                   {safeContent.description}
                 </p>
               </div>
@@ -420,37 +405,20 @@ export default function LocationArrivalMapsSection({
 
           {/* ── Map Box ── */}
           <div
-            ref={mapBoxRef}
             className='w-full max-w-[1630px] h-[600px] my-10 mx-auto relative overflow-hidden'
             style={{
-              border: "1px solid rgba(17,17,17,0.15)",
-              boxShadow: "0 8px 40px rgba(0,0,0,0.10)",
-            }}>
-            <InteractiveMap />
-
-            {/* Subtle corner labels */}
-            <div
-              style={{
-                position: "absolute",
-                bottom: 16,
-                left: 20,
-                zIndex: 800,
-                pointerEvents: "none",
-                fontFamily: "sans-serif",
-                fontSize: 11,
-                letterSpacing: "0.12em",
-                color: "#111111",
-                opacity: 0.5,
-                textTransform: "uppercase",
-              }}>
-              Interactive Map
-            </div>
+              border: '1px solid rgba(17,17,17,0.15)',
+              boxShadow: '0 8px 40px rgba(0,0,0,0.10)',
+            }}
+          >
+            <img src='/bahMap.png' alt='Map Area' className='w-full h-full object-cover' />
           </div>
 
           {/* Bottom maps */}
           <div
             ref={cardsWrapRef}
-            className='grid grid-cols-1 gap-0 pt-[88px] py-10 md:grid-cols-2 hidden'>
+            className='grid grid-cols-1 gap-0 pt-[88px] py-10 md:grid-cols-2 hidden'
+          >
             <MapPanel
               refProp={leftCardRef}
               labelRef={leftLabelRef}
@@ -474,32 +442,22 @@ export default function LocationArrivalMapsSection({
   );
 }
 
-function MapPanel({
-  refProp,
-  labelRef,
-  label,
-  image,
-  alt,
-  withDivider = false,
-}) {
+function MapPanel({ refProp, labelRef, label, image, alt, withDivider = false }) {
   return (
     <div
       ref={refProp}
       className={[
-        "relative h-[360px] mx-1.5 my-1.5 md:my-0 overflow-hidden sm:h-[430px] md:h-[520px] lg:h-[882px]",
-        withDivider ? "md:border-l md:border-l-[#e7d9d4]" : "",
-      ].join(" ")}>
+        'relative h-[360px] mx-1.5 my-1.5 md:my-0 overflow-hidden sm:h-[430px] md:h-[520px] lg:h-[882px]',
+        withDivider ? 'md:border-l md:border-l-[#e7d9d4]' : '',
+      ].join(' ')}
+    >
       <div
         data-map-image
         className='absolute inset-0 scale-100'
-        style={{ transformOrigin: "center center" }}>
+        style={{ transformOrigin: 'center center' }}
+      >
         {image ? (
-          <img
-            src={image}
-            alt={alt}
-            className='h-full w-full object-cover'
-            draggable='false'
-          />
+          <img src={image} alt={alt} className='h-full w-full object-cover' draggable='false' />
         ) : (
           <div className='h-full w-full bg-[#091526]' />
         )}
@@ -508,7 +466,8 @@ function MapPanel({
       <div className='absolute inset-0 flex items-center justify-center px-8 text-center'>
         <div
           ref={labelRef}
-          className='text-[44px] molde-expanded font-light uppercase leading-none tracking-[-0.045em] text-black sm:text-[58px] md:text-[68px] lg:text-[62px] xl:text-[64px]'>
+          className='text-[44px] molde-expanded font-light uppercase leading-none tracking-[-0.045em] text-black sm:text-[58px] md:text-[68px] lg:text-[62px] xl:text-[64px]'
+        >
           {label}
         </div>
       </div>
