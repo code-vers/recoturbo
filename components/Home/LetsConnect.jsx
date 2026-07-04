@@ -7,7 +7,7 @@ const LetsConnect = () => {
           <img src='/worldmap.png' alt='World Map' className='w-[500px] h-auto object-contain' />
         </div>
 
-        <h2 className='md:text-[35px] lg:text-[55px] lg:leading-[70px]  tracking-wide uppercase mb-8 text-[#111111]'>
+        <h2 className='md:text-[35px] lg:text-[45px] lg:leading-[70px]  tracking-wide uppercase mb-8 text-[#111111]'>
           LETS CONNECT
         </h2>
 
@@ -16,7 +16,7 @@ const LetsConnect = () => {
           to a member of the team who will be more than happy to answer your questions.
         </p>
 
-        <h3 className='md:text-[35px] lg:text-[55px] lg:leading-[70px]  tracking-wide uppercase mb-8 text-[#111111]'>
+        <h3 className='md:text-[35px] lg:text-[45px] lg:leading-[70px]  tracking-wide uppercase mb-8 text-[#111111]'>
           WORLDWIDE CONTACTS
         </h3>
 
