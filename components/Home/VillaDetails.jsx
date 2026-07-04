@@ -72,7 +72,7 @@ const VillaDetails = () => {
               nextEl: '.next-btn',
             }}
             loop={false}
-            className='w-full h-[300px] md:h-[450px] lg:h-[600px]'
+            className='w-full h-[300px] md:h-[450px] lg:h-[750px]'
           >
             {images.map((img, index) => (
               <SwiperSlide key={index}>

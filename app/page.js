@@ -1,16 +1,14 @@
 import About from '@/components/Home/About';
 import EditorialPinnedGallery from '@/components/Home/EditorialPinnedGallery';
-import LuxuryFaqSection from '@/components/Home/faq';
 import FeaturedExperienceSection2 from '@/components/Home/FeaturedExperienceSection2';
 import HeroBanner from '@/components/Home/HeroBanner';
 import HeroSection2 from '@/components/Home/HeroSection2';
-import LocationArrivalMapsSection from '@/components/Home/LocationArrivalMapsSection';
 import LuxuryResortShowcase from '@/components/Home/LuxuryResortShowcase';
-import OrderSteps from '@/components/Home/OrderSteps';
 import StaySomewhereCta from '@/components/Home/StaySomewhereCta';
 import VillaDetails from '@/components/Home/VillaDetails';
 import DynamicTitle from '@/components/Shared/DynamicTitle';
 import DynamicTitle2 from '@/components/Shared/DynamicTitle2';
+import LetsConnect from '@/components/Home/LetsConnect';
 
 export default function Page() {
   return (
@@ -27,14 +25,14 @@ export default function Page() {
       </div>
       <DynamicTitle2 />
       <FeaturedExperienceSection2 />
-      <LuxuryFaqSection />
-      <LocationArrivalMapsSection
+      {/* <LocationArrivalMapsSection
         content={{
           leftMapImage: '/UK.png',
           rightMapImage: '/Baharain.png',
         }}
-      />
-      <OrderSteps />
+      /> */}
+      {/* <OrderSteps /> */}
+      <LetsConnect />
       <StaySomewhereCta />
     </>
   );

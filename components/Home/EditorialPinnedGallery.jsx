@@ -1,52 +1,45 @@
 /* eslint-disable @next/next/no-img-element */
-"use client";
+'use client';
 
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useLayoutEffect, useMemo, useRef } from "react";
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLayoutEffect, useMemo, useRef } from 'react';
 
 const DEFAULT_SLIDES = [
   {
-    title: "SHARED MOMENTS",
-    description: "Spaces designed for connection, comfort, and togetherness.",
-    image: "/editorial-gallery/i1.jpg",
+    title: 'SHARED MOMENTS',
+    description: 'Spaces designed for connection, comfort, and togetherness.',
+    image: '/editorial-gallery/i1.jpg',
   },
   {
-    title: "AIRBNB RESORT",
-    description: "Design-led spaces that drive premium returns.",
-    image: "/editorial-gallery/i2.jpg",
+    title: 'AIRBNB RESORT',
+    description: 'Design-led spaces that drive premium returns.',
+    image: '/editorial-gallery/i2.jpg',
   },
   {
-    title: "OUTDOOR EXPERIENCE",
-    description: "Reconnect with nature through curated activities.",
-    image: "/editorial-gallery/i3.jpg",
+    title: 'OUTDOOR EXPERIENCE',
+    description: 'Reconnect with nature through curated activities.',
+    image: '/editorial-gallery/i3.jpg',
   },
   {
-    title: "SEAFRONT LIVING",
-    description: "Exclusive locations where the view defines the experience.",
-    image: "/editorial-gallery/i4.jpg",
+    title: 'SEAFRONT LIVING',
+    description: 'Exclusive locations where the view defines the experience.',
+    image: '/editorial-gallery/i4.jpg',
   },
   {
-    title: "FIRST GUESTS",
-    description:
-      "Create a destination where every arrival feels Ike an escape.",
-    image: "/editorial-gallery/i5.jpg",
+    title: 'FIRST GUESTS',
+    description: 'Create a destination where every arrival feels Ike an escape.',
+    image: '/editorial-gallery/i5.jpg',
   },
   {
-    title: "UNDER THE STARS",
-    description: "Immerse guests in nature with uninterrupted night views.",
-    image: "/editorial-gallery/i6.jpg",
+    title: 'UNDER THE STARS',
+    description: 'Immerse guests in nature with uninterrupted night views.',
+    image: '/editorial-gallery/i6.jpg',
   },
 ];
 
-export default function EditorialPinnedGallery({
-  slides = DEFAULT_SLIDES,
-  className = "",
-}) {
-  const safeSlides = useMemo(
-    () => (slides?.length ? slides : DEFAULT_SLIDES),
-    [slides],
-  );
+export default function EditorialPinnedGallery({ slides = DEFAULT_SLIDES, className = '' }) {
+  const safeSlides = useMemo(() => (slides?.length ? slides : DEFAULT_SLIDES), [slides]);
 
   const sectionRef = useRef(null);
   const titleWrapRef = useRef(null);
@@ -68,29 +61,22 @@ export default function EditorialPinnedGallery({
     const images = imageRefs.current.filter(Boolean);
     const dots = dotRefs.current.filter(Boolean);
 
-    if (
-      !section ||
-      !titleWrap ||
-      !descWrap ||
-      !countWrap ||
-      !progressFill ||
-      !images.length
-    ) {
+    if (!section || !titleWrap || !descWrap || !countWrap || !progressFill || !images.length) {
       return;
     }
 
     // GPU-accelerate all image layers upfront — no scale, just compositing
     images.forEach((img) => {
-      img.style.willChange = "opacity";
+      img.style.willChange = 'opacity';
     });
 
     const mm = gsap.matchMedia();
 
     mm.add(
       {
-        isDesktop: "(min-width: 1024px)",
-        isTablet: "(min-width: 768px) and (max-width: 1023px)",
-        isMobile: "(max-width: 767px)",
+        isDesktop: '(min-width: 1024px)',
+        isTablet: '(min-width: 768px) and (max-width: 1023px)',
+        isMobile: '(max-width: 767px)',
       },
       (context) => {
         const { isDesktop, isTablet } = context.conditions;
@@ -112,10 +98,10 @@ export default function EditorialPinnedGallery({
           tl.to(targets, {
             y: -12,
             opacity: 0,
-            clipPath: "inset(0 0 100% 0)",
+            clipPath: 'inset(0 0 100% 0)',
             duration: 0.38,
             stagger: 0.04,
-            ease: "power2.inOut",
+            ease: 'power2.inOut',
           });
 
           tl.add(() => {
@@ -129,15 +115,15 @@ export default function EditorialPinnedGallery({
             {
               y: 20,
               opacity: 0,
-              clipPath: "inset(100% 0 0% 0)",
+              clipPath: 'inset(100% 0 0% 0)',
             },
             {
               y: 0,
               opacity: 1,
-              clipPath: "inset(0% 0 0% 0)",
+              clipPath: 'inset(0% 0 0% 0)',
               duration: 0.85,
               stagger: 0.06,
-              ease: "expo.out",
+              ease: 'expo.out',
             },
           );
         };
@@ -147,7 +133,7 @@ export default function EditorialPinnedGallery({
             gsap.to(dot, {
               opacity: i <= index ? 1 : 0.22,
               duration: 0.6,
-              ease: "power2.out",
+              ease: 'power2.out',
               overwrite: true,
             });
           });
@@ -185,7 +171,7 @@ export default function EditorialPinnedGallery({
                   force3D: true,
                   duration: 2.0,
                   delay: 0.55,
-                  ease: "power1.inOut",
+                  ease: 'power1.inOut',
                   overwrite: true,
                 },
               );
@@ -195,7 +181,7 @@ export default function EditorialPinnedGallery({
                 autoAlpha: 0,
                 force3D: true,
                 duration: 2.2,
-                ease: "power1.inOut",
+                ease: 'power1.inOut',
                 overwrite: true,
               });
             } else {
@@ -229,16 +215,14 @@ export default function EditorialPinnedGallery({
             ? window.innerHeight * 1.12
             : window.innerHeight * 1.0;
 
-        const holdDistance = isDesktop
-          ? window.innerHeight * 0.24
-          : window.innerHeight * 0.14;
+        const holdDistance = isDesktop ? window.innerHeight * 0.24 : window.innerHeight * 0.14;
 
         const totalDistance = perSlideDistance * total + holdDistance;
         const revealDistance = totalDistance - holdDistance;
 
         const trigger = ScrollTrigger.create({
           trigger: section,
-          start: "top top",
+          start: 'top top',
           end: `+=${totalDistance}`,
           pin: true,
           pinSpacing: true,
@@ -247,20 +231,14 @@ export default function EditorialPinnedGallery({
           invalidateOnRefresh: true,
           fastScrollEnd: false,
           onUpdate: (self) => {
-            const scrolled = Math.min(
-              self.progress * totalDistance,
-              revealDistance,
-            );
+            const scrolled = Math.min(self.progress * totalDistance, revealDistance);
             const continuous = scrolled / perSlideDistance;
 
-            const fillScale = Math.min(
-              1,
-              Math.max(1 / total, (continuous + 1) / total) * 0.8,
-            );
+            const fillScale = Math.min(1, Math.max(1 / total, (continuous + 1) / total) * 0.8);
             gsap.to(progressFill, {
               scaleX: fillScale,
               duration: 0.9,
-              ease: "power2.out",
+              ease: 'power2.out',
               overwrite: true,
             });
 
@@ -285,14 +263,15 @@ export default function EditorialPinnedGallery({
       <section
         ref={sectionRef}
         className={[
-          "relative h-screen w-full pt-40 md:pt-0 overflow-hidden bg-[#ebe7e4] p-4 md:p-0",
+          'relative h-screen w-full pt-40 md:pt-0 overflow-hidden bg-[#ebe7e4] p-4 md:p-0',
           className,
-        ].join(" ")}
+        ].join(' ')}
         style={{
-          isolation: "isolate",
+          isolation: 'isolate',
           backgroundImage:
-            "radial-gradient(circle at 18% 22%, rgba(255,232,220,0.42), transparent 18%), radial-gradient(circle at 66% 15%, rgba(194,220,255,0.24), transparent 16%), radial-gradient(circle at 84% 86%, rgba(255,221,206,0.16), transparent 14%)",
-        }}>
+            'radial-gradient(circle at 18% 22%, rgba(255,232,220,0.42), transparent 18%), radial-gradient(circle at 66% 15%, rgba(194,220,255,0.24), transparent 16%), radial-gradient(circle at 84% 86%, rgba(255,221,206,0.16), transparent 14%)',
+        }}
+      >
         <div>
           <div className='mx-auto flex h-full w-full max-w-[1640px] flex-col pt-4 pb-4 sm:pt-5 sm:pb-5 lg:pt-10 lg:pb-6'>
             <div className='grid grid-cols-12 gap-y-5 lg:gap-y-0 lg:gap-x-[42px] h-[200px] md:h-auto'>
@@ -300,7 +279,8 @@ export default function EditorialPinnedGallery({
                 <div className='mb-4 h-[2px] w-[40px] ml-0.5 md:ml-1 bg-[#2b2b2b]/75 lg:mb-5' />
                 <div
                   ref={titleWrapRef}
-                  className='max-w-[780px] molde-expanded text-[24px] md:text-[30px] leading-[30px] md:leading-[50px] font-normal text-black'>
+                  className='max-w-[780px] molde-expanded text-[24px] md:text-[30px] leading-[30px] md:leading-[50px] font-normal text-black'
+                >
                   <span className='block'>{safeSlides[0].title}</span>
                 </div>
               </div>
@@ -308,14 +288,16 @@ export default function EditorialPinnedGallery({
               <div className='col-span-12 lg:col-span-6 lg:pt-[14px]'>
                 <div
                   ref={descWrapRef}
-                  className='max-w-[800px] text-[15px] md:text-[18px] md:mt-7 leading-[25px] text-black'>
+                  className='max-w-[800px] text-[15px] md:text-[18px] md:mt-7 leading-[25px] text-black'
+                >
                   <span className='block'>{safeSlides[0].description}</span>
                 </div>
 
                 <div className='mt-12 flex w-[120px] flex-col gap-[7px]'>
                   <div
                     ref={countWrapRef}
-                    className='text-[clamp(15px,0.96vw,22px)] leading-none tracking-[-0.03em] text-black'>
+                    className='text-[clamp(15px,0.96vw,22px)] leading-none tracking-[-0.03em] text-black'
+                  >
                     <span className='block'>1/{safeSlides.length}</span>
                   </div>
 
@@ -340,7 +322,8 @@ export default function EditorialPinnedGallery({
                     ref={(el) => {
                       imageRefs.current[index] = el;
                     }}
-                    className='absolute inset-0'>
+                    className='absolute inset-0'
+                  >
                     <img
                       src={slide.image}
                       alt={slide.title}
