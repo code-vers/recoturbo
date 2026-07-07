@@ -314,7 +314,7 @@ export default function EditorialPinnedGallery({ slides = DEFAULT_SLIDES, classN
               </div>
             </div>
 
-            <div className='relative mt-12 h-[56vh] overflow-hidden sm:mt-7 sm:h-[58vh] md:mt-8 md:h-[60vh] lg:mt-9 lg:h-[66.5vh]'>
+            <div className='relative mt-12 aspect-[16/7] max-h-[1000px] overflow-hidden sm:mt-7 md:mt-8 lg:mt-9'>
               <div className='relative h-full w-full overflow-hidden'>
                 {safeSlides.map((slide, index) => (
                   <div
@@ -327,7 +327,7 @@ export default function EditorialPinnedGallery({ slides = DEFAULT_SLIDES, classN
                     <img
                       src={slide.image}
                       alt={slide.title}
-                      className='h-[200px] md:h-[550.59] w-full object-cover mt-12'
+                      className='h-full w-full object-cover'
                       draggable='false'
                     />
                   </div>
