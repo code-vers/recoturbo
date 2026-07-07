@@ -1,49 +1,52 @@
-"use client";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
-import { Navigation } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+'use client';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState } from 'react';
+import { Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 const VillaDetails = () => {
   const [showFeatures, setShowFeatures] = useState(false);
 
   const images = [
-    "/roomone-01.jpg",
-    "/roomone-02.jpg",
-    "/roomone-03.jpg",
-    "/roomone-04.jpg",
-    "/roomone-05.jpg",
-    "/roomone-07.jpg",
-    "/roomone-08.jpg",
-    "/roomone-09.jpg",
-    "/grok-image-89d36f3d-449b-4495-91bf-ed61e385a719-2.png",
+    '/1.jpg',
+    '/2.jpg',
+    '/3.jpg',
+    '/4.jpg',
+    '/5.jpg',
+    '/6.jpg',
+    '/7.jpg',
+    '/8.jpg',
+    '/9.jpg',
+    '/10.jpg',
+    '/11.jpg',
   ];
 
   const features = {
     Concept:
-      "A refined, design-led retreat suite created for seamless placement in natural settings, hospitality environments, or private land.",
+      'A refined, design-led retreat suite created for seamless placement in natural settings, hospitality environments, or private land.',
     Versatility:
-      "The R1 Terra Suite is perfectly suited for short-stay rentals, boutique accommodation, or personal use, offering a flexible space that comfortably accommodates a couple or small family. Thoughtfully designed to be compact, energy-efficient, and visually striking, it delivers both comfort and versatility—equally suited as a luxury guest suite, workspace, or reception unit. The R1 Terra Suite is designed around a flexible, modular interior system that maximises both space and functionality. Each unit seamlessly integrates a bedroom area, mini-kitchen, bathroom, wardrobe, and lounge seating, creating a complete, self-contained living environment.",
+      'The R1 Terra Suite is perfectly suited for short-stay rentals, boutique accommodation, or personal use, offering a flexible space that comfortably accommodates a couple or small family. Thoughtfully designed to be compact, energy-efficient, and visually striking, it delivers both comfort and versatility—equally suited as a luxury guest suite, workspace, or reception unit. The R1 Terra Suite is designed around a flexible, modular interior system that maximises both space and functionality. Each unit seamlessly integrates a bedroom area, mini-kitchen, bathroom, wardrobe, and lounge seating, creating a complete, self-contained living environment.',
     Interior:
-      "Designed around a flexible, modular interior system that integrates a bedroom area, mini-kitchen, bathroom, wardrobe, and lounge seating.",
+      'Designed around a flexible, modular interior system that integrates a bedroom area, mini-kitchen, bathroom, wardrobe, and lounge seating.',
     Adaptability:
-      "Fully adaptable system allowing for additional configurations such as upper-level extensions or secondary bedroom modules, enabling the space to evolve in line with different lifestyle or hospitality requirements.",
+      'Fully adaptable system allowing for additional configurations such as upper-level extensions or secondary bedroom modules, enabling the space to evolve in line with different lifestyle or hospitality requirements.',
     Philosophy:
-      "Every detail is considered, resulting in a space that is not just visually striking, but deeply restorative—a private sanctuary designed for elevated living at the edge of nature.",
+      'Every detail is considered, resulting in a space that is not just visually striking, but deeply restorative—a private sanctuary designed for elevated living at the edge of nature.',
   };
 
   return (
     <section
       className='bg-[#ebe7e4] lg:min-h-screen px-4 md:px-8 lg:px-0'
       style={{
-        isolation: "isolate",
+        isolation: 'isolate',
         backgroundImage:
-          "radial-gradient(circle at 18% 22%, rgba(255,232,220,0.42), transparent 18%), radial-gradient(circle at 66% 15%, rgba(194,220,255,0.24), transparent 16%), radial-gradient(circle at 84% 86%, rgba(255,221,206,0.16), transparent 14%)",
-      }}>
+          'radial-gradient(circle at 18% 22%, rgba(255,232,220,0.42), transparent 18%), radial-gradient(circle at 66% 15%, rgba(194,220,255,0.24), transparent 16%), radial-gradient(circle at 84% 86%, rgba(255,221,206,0.16), transparent 14%)',
+      }}
+    >
       <div className='max-w-[1640px] mx-auto font-sans text-[#1a1a1a]'>
         {/* Header Info */}
         <div className='py-6 lg:py-10'>
@@ -65,11 +68,12 @@ const VillaDetails = () => {
           <Swiper
             modules={[Navigation]}
             navigation={{
-              prevEl: ".prev-btn",
-              nextEl: ".next-btn",
+              prevEl: '.prev-btn',
+              nextEl: '.next-btn',
             }}
             loop={false}
-            className='w-full h-[300px] md:h-[450px] lg:h-[600px]'>
+            className='w-full h-[300px] md:h-[450px] lg:h-[750px]'
+          >
             {images.map((img, index) => (
               <SwiperSlide key={index}>
                 <img
@@ -82,18 +86,10 @@ const VillaDetails = () => {
 
             {/* Custom Navigation Buttons - Hidden on small mobile for cleaner UI */}
             <button className='prev-btn absolute left-2 lg:left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center bg-white/80 rounded-full shadow-lg backdrop-blur-sm transition-all hover:bg-white disabled:opacity-0'>
-              <ChevronLeft
-                size={20}
-                className='lg:w-6 lg:h-6'
-                strokeWidth={1.5}
-              />
+              <ChevronLeft size={20} className='lg:w-6 lg:h-6' strokeWidth={1.5} />
             </button>
             <button className='next-btn absolute right-2 lg:right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center bg-white/80 rounded-full shadow-lg backdrop-blur-sm transition-all hover:bg-white disabled:opacity-0'>
-              <ChevronRight
-                size={20}
-                className='lg:w-6 lg:h-6'
-                strokeWidth={1.5}
-              />
+              <ChevronRight size={20} className='lg:w-6 lg:h-6' strokeWidth={1.5} />
             </button>
           </Swiper>
         </div>
@@ -102,8 +98,9 @@ const VillaDetails = () => {
         <div className='flex flex-col md:flex-row gap-2 w-full border-b border-gray-200 mt-5 pb-6 lg:pb-0'>
           <button
             onClick={() => setShowFeatures(!showFeatures)}
-            className={`flex-1 py-4 lg:py-5 hover:bg-black hover:text-white cursor-pointer uppercase tracking-[0.2em] text-xs lg:text-sm font-medium border border-black transition-colors ${showFeatures ? "bg-black text-white" : "bg-transparent text-black"}`}>
-            {showFeatures ? "Close" : "Explore"}
+            className={`flex-1 py-4 lg:py-5 hover:bg-black hover:text-white cursor-pointer uppercase tracking-[0.2em] text-xs lg:text-sm font-medium border border-black transition-colors ${showFeatures ? 'bg-black text-white' : 'bg-transparent text-black'}`}
+          >
+            {showFeatures ? 'Close' : 'Explore'}
           </button>
           <button className='flex-1 cursor-pointer py-4 lg:py-5 hover:bg-black text-black hover:text-white uppercase tracking-[0.2em] text-xs lg:text-sm font-medium border border-black transition-colors'>
             Book Consultation
@@ -125,7 +122,8 @@ const VillaDetails = () => {
               {Object.entries(features).map(([key, value]) => (
                 <div
                   key={key}
-                  className='grid grid-cols-1 lg:grid-cols-[350px_1fr] border-b border-gray-300 py-6 items-baseline'>
+                  className='grid grid-cols-1 lg:grid-cols-[350px_1fr] border-b border-gray-300 py-6 items-baseline'
+                >
                   <span className='font-bold text-[13px] lg:text-[14px] uppercase tracking-[0.1em] mb-2 lg:mb-0'>
                     {key}:
                   </span>
